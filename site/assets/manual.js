@@ -31,9 +31,14 @@
     var bar=document.getElementById('tabbar');
     /* the build guide's stage bar sticks under the tabs; the figures that stick below them start under both */
     var sbar=document.querySelector('main > .stepbar');
-    function stick(){ if(!bar)return; var r=document.documentElement.style, h=bar.offsetHeight;
-      r.setProperty('--tabh',h+'px'); r.setProperty('--stick',(h+(sbar?sbar.offsetHeight:0))+'px'); }
-    requestAnimationFrame(stick); window.addEventListener('resize',stick);   /* measured on the next frame, not while loading */
+    /* heights come from a ResizeObserver, which reports them after layout: reading offsetHeight here forced one */
+    var hb=58, hs=0;
+    function stick(){ var r=document.documentElement.style; r.setProperty('--tabh',hb+'px'); r.setProperty('--stick',(hb+hs)+'px'); }
+    if(bar&&window.ResizeObserver){
+      new ResizeObserver(function(es){ es.forEach(function(e){ var b=e.borderBoxSize&&e.borderBoxSize[0], h=b?b.blockSize:e.target.offsetHeight;
+        if(e.target===bar)hb=h; else hs=h; }); stick(); }).observe(bar);
+      if(sbar)new ResizeObserver(function(es){ var b=es[0].borderBoxSize&&es[0].borderBoxSize[0]; hs=b?b.blockSize:sbar.offsetHeight; stick(); }).observe(sbar);
+    } else if(bar){ requestAnimationFrame(function(){ hb=bar.offsetHeight; hs=sbar?sbar.offsetHeight:0; stick(); }); }
 
     function Asm(svg){
       var els={}; [].forEach.call(svg.querySelectorAll('[data-el]'),function(g){els[g.getAttribute('data-el')]=g;});
