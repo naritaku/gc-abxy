@@ -59,7 +59,9 @@ if(s===9){void els.rubber.getBoundingClientRect();els.rubber.classList.add('hl')
 asm.style.transform=s===16?'scaleY(-1)':'none';
 [].forEach.call(labs,function(t){t.style.opacity=s===16?0:1;});
 }
-function snap(s){svg.classList.add('snap');apply(s);svg.getBoundingClientRect();svg.classList.remove('snap');}
+var snaps=0;
+function snap(s){var n=++snaps;svg.classList.add('snap');apply(s);
+requestAnimationFrame(function(){requestAnimationFrame(function(){if(n===snaps)svg.classList.remove('snap');});});}
 function stop(){timers.forEach(clearTimeout);timers=[];}
 function play(a,b){
 stop();var start=a===0?0:a-1;snap(start);
@@ -128,23 +130,28 @@ if(sn&&sc._anim&&!cl){var r=sn.split('-').map(Number);sc._anim.play(r[0],r.lengt
 var ticking=false;
 function update(){
 ticking=false;var vh=window.innerHeight;
-scs.forEach(function(sc){
+var end=window.scrollY+vh>=document.documentElement.scrollHeight-4;
+var plans=scs.map(function(sc){
 var r=sc.getBoundingClientRect();
-if(!sc.offsetParent||r.bottom<0||r.top>vh){if(sc._idx!==-1){sc._idx=-1;if(sc._anim)sc._anim.stop();if(sc._vid)sc._vid.pause();}return;}
+if(!sc.offsetParent||r.bottom<0||r.top>vh)return{sc:sc,out:true};
 var st=sc._stage,tops=sc._lis.map(function(li){return li.getBoundingClientRect().top;});
 var natural=st.getBoundingClientRect().bottom-(sc._off||0);
 var over=natural-tops[tops.length-1]+8,off=over>0?-over:0;
 var sb=natural+off,line=sb+(vh-sb)*0.3,idx=0;
 tops.forEach(function(t,i){if(t<=line)idx=i;});
-var end=window.scrollY+vh>=document.documentElement.scrollHeight-4;
 if(end)tops.forEach(function(t,i){if(i>idx&&t<vh)idx=i;});
-if(off!==(sc._off||0)){sc._off=off;st.style.transform=off?'translateY('+off+'px)':'';}
-if(idx!==sc._idx)activate(sc,idx);
+return{sc:sc,off:off,idx:idx};
+});
+plans.forEach(function(p){
+var sc=p.sc;
+if(p.out){if(sc._idx!==-1){sc._idx=-1;if(sc._anim)sc._anim.stop();if(sc._vid)sc._vid.pause();}return;}
+if(p.off!==(sc._off||0)){sc._off=p.off;sc._stage.style.transform=p.off?'translateY('+p.off+'px)':'';}
+if(p.idx!==sc._idx)activate(sc,p.idx);
 });
 }
 function req(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
 window.addEventListener('scroll',req,{passive:true});window.addEventListener('resize',req);
-req();
+ticking=true;requestAnimationFrame(function(){setTimeout(update,0);});
 })();
 (function(){
 var vs=[].slice.call(document.querySelectorAll('figure.clips video, .hero-fig video'));
