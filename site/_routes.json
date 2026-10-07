@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "include": [
+    "/",
+    "/prep/",
+    "/solder/",
+    "/build/",
+    "/firmware/",
+    "/use/",
+    "/help/",
+    "/specs/",
+    "/making/"
+  ],
+  "exclude": []
+}

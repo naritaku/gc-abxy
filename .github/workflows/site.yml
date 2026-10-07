@@ -1,11 +1,12 @@
-# Deploys site/ (the user manual and the /fw, /support redirects) to Cloudflare Pages project "gc-abxy".
+# Deploys site/ (the user manual and the /fw, /support redirects) and functions/ (Markdown for agents) to Cloudflare
+# Pages project "gc-abxy".
 # main -> https://gc-abxy.pages.dev/ ; other branches and pull requests -> <branch>.gc-abxy.pages.dev (preview).
 name: site
 
 on:
   push:
     branches: ["**"]
-    paths: ["site/**", ".github/workflows/site.yml"]
+    paths: ["site/**", "functions/**", ".github/workflows/site.yml"]
   workflow_dispatch:
 
 concurrency:
