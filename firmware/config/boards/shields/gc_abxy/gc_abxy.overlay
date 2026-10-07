@@ -1,0 +1,86 @@
+/*
+ * gc-abxy REV A shield overlay. Pin assignment follows the REV A schematic:
+ * A = D7, B = D8, X = D6, Y = D9 (2026-09-23 更新, 旧 D10), PROFILE = D5, BAT_ADC = D4 (P0.04 / AIN2).
+ * Contacts and the tact switch pull the line to GND. REV A (KiCad b5a20a4) has 100 k external pull-ups R3..R6 on the
+ * four key lines, so the internal ~13 k pull-up is NOT enabled there (it would swamp the 100 k). PROFILE keeps the
+ * internal pull-up (no external resistor).
+ *
+ * PROFILE is deliberately NOT a kscan input: it is read by the module (gc,profile-button, module/gc_abxy/src/mgmt.c)
+ * so it never becomes a keymap position. ZMK Studio therefore shows only A/B/X/Y and a user cannot remap or lose the
+ * button that switches profiles and performs the factory reset.
+ */
+#include <dt-bindings/zmk/matrix_transform.h>
+#include "gc_abxy-layouts.dtsi"
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,physical-layout = &gc_abxy_layout;
+        zmk,battery = &vbatt_cr2450;
+    };
+
+    gc_profile_button: gc_profile_button {
+        compatible = "gc,profile-button";
+        gpios = <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;   /* PROFILE pad 6  P0.05 */
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-direct";
+        wakeup-source;
+        /* conductive-rubber contacts (hundreds of ohms to tens of kilo-ohms, slow make/break): longer debounce */
+        debounce-press-ms = <12>;
+        debounce-release-ms = <15>;
+        input-gpios
+            = <&xiao_d 7  GPIO_ACTIVE_LOW>   /* 0: KEY_A   pad 8  P1.12 */
+            , <&xiao_d 8  GPIO_ACTIVE_LOW>   /* 1: KEY_B   pad 9  P1.13 */
+            , <&xiao_d 6  GPIO_ACTIVE_LOW>   /* 2: KEY_X   pad 7  P1.11 */
+            , <&xiao_d 9  GPIO_ACTIVE_LOW>   /* 3: KEY_Y   pad 10 P1.14 */
+            ;
+    };
+
+    /*
+     * CR2450 sense: BAT_SW -> 1M / 1M -> AIN2, 100 nF. No power-gpios (the divider is always on, 1.5 uA).
+     * The board's own vbatt (AIN7 via P0.14 switch) is not populated on this design.
+     */
+    vbatt_cr2450: vbatt_cr2450 {
+        compatible = "gc,battery-cr2450";
+        io-channels = <&adc 2>;
+        output-ohms = <1000000>;
+        full-ohms = <2000000>;
+    };
+};
+
+/ {
+    /* kscan-gpio-direct reports one column per input-gpios entry (row 0). 1 x 4 identity transform. */
+    transform0: keymap_transform {
+        compatible = "zmk,matrix-transform";
+        columns = <4>;
+        rows = <1>;
+        map = <RC(0,0) RC(0,1) RC(0,2) RC(0,3)>;
+    };
+};
+
+&gc_abxy_layout {
+    kscan = <&kscan0>;
+    transform = <&transform0>;
+};
+
+&vbatt {
+    status = "disabled";
+};
+
+/*
+ * Unused XIAO peripherals stay disabled explicitly: xiao_i2c would put pinctrl pull-ups on P0.04/P0.05 (BAT_ADC /
+ * PROFILE) and xiao_spi would claim P1.13/P1.15 (KEY_B / D10 spare) if a future config enabled I2C/SPI.
+ */
+&xiao_i2c {
+    status = "disabled";
+};
+
+&xiao_spi {
+    status = "disabled";
+};
+
+&xiao_serial {
+    status = "disabled";
+};

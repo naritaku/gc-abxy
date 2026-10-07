@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja" data-base="../" data-page="making">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GC ABXY 開発記（きっかけと、AI と進めた作り方）</title>
+<meta name="description" content="GC ABXY の開発記。作ったきっかけと、要件定義・ケースと基板の設計・回路・取扱説明書を AI と進めた作り方。">
+<link rel="canonical" href="https://gc-abxy.pages.dev/making/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GC ABXY">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="GC ABXY 開発記（きっかけと、AI と進めた作り方）">
+<meta property="og:description" content="GC ABXY の開発記。作ったきっかけと、要件定義・ケースと基板の設計・回路・取扱説明書を AI と進めた作り方。">
+<meta property="og:url" content="https://gc-abxy.pages.dev/making/">
+<meta property="og:image" content="https://gc-abxy.pages.dev/assets/img/back-on.jpg?v=49c7b770b5">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/icon.svg?v=a9eed07451" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=8b393a4c44">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://gc-abxy.pages.dev/#site", "name": "GC ABXY", "url": "https://gc-abxy.pages.dev/", "inLanguage": "ja"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://gc-abxy.pages.dev/"}, {"@type": "ListItem", "position": 2, "name": "開発記", "item": "https://gc-abxy.pages.dev/making/"}]}, {"@type": "CollectionPage", "name": "GC ABXY 開発記", "description": "GC ABXY の開発記。作ったきっかけと、要件定義・ケースと基板の設計・回路・取扱説明書を AI と進めた作り方。", "inLanguage": "ja", "author": {"@type": "Person", "name": "naritaku", "url": "https://github.com/naritaku"}}]}</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head" id="top">
+    <a class="brand" href="../" aria-label="GC ABXY 取扱説明書のトップへ"><svg viewBox="0 0 100 100" width="100" height="100" role="img">
+        <circle cx="27" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="73" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="27" cy="73" r="16.8" fill="#ce4237"/>
+        <circle cx="73" cy="73" r="16.8" fill="#3fa65a"/>
+      </svg><span><span class="eyebrow">取扱説明書</span><b>GC ABXY</b></span></a>
+  </header>
+
+  <nav id="tabbar" class="tabs" aria-label="ページ">
+    <a href="../">ホーム</a>
+    <a href="../prep/">ビルドガイド</a>
+    <a href="../use/">使い方</a>
+    <a href="../help/">困ったとき</a>
+  </nav>
+
+  <main id="main">
+<h1>開発記</h1>
+<p class="lede">GC ABXY を、カプセルトイの 3D スキャンから完成までどう作ったかの記録です。</p>
+<p>きっかけは、2026 年 9 月に渋谷の公式ショップのカプセルトイ売り場で見つけた「コントローラーボタンコレクション2」でした。ABXY ボタンの手ざわりがよく、これで実際に押せるキーを作りたくなりました。ちょうどキーケット 2027 の申し込みが始まったニュースを見たので、形にして申し込みを目指そうと作り始めました。</p>
+
+<section id="how-made">
+  <h2>ほぼ 1 か月で作ったもの</h2>
+  <div class="tablewrap"><table class="kv"><tbody>
+    <tr><th scope="row">ケース</th><td>カプセルトイを 3D スキャンして寸法を取り、背面ケースを設計しました。透明レジンの光造形で、中の基板と LED が見えるようにしています。</td></tr>
+    <tr><th scope="row">基板</th><td>KiCad で直径 48.4 mm の丸い基板を設計し、小さい部品は実装済みで発注しました。無線は、技適を受けた市販の XIAO nRF52840 を使う人が用意して付ける形にし、キットには電波を出す部品を入れていません。</td></tr>
+    <tr><th scope="row">ファームウェア</th><td>ZMK をもとに、PROFILE ボタンの専用処理、LED の合図、診断機能を足しました。</td></tr>
+    <tr><th scope="row">取扱説明書</th><td>組み立てと操作は、30 本の短いアニメで説明しています。</td></tr>
+  </tbody></table></div>
+</section>
+
+<section id="with-ai">
+  <h2>AI と進めた作り方</h2>
+  <p>設計から取扱説明書まで、ほとんど AI と会話しながら作りました。</p>
+  <ul>
+    <li>最初に作りたいものを Codex に伝えて、V 字モデルに沿って要件を詰めました。要件や試験の文書は、ひととおり書いてもらっています。</li>
+    <li>ケースは、3D スキャンとノギスで測った値をひたすら伝え、MCP サーバー経由で AI に CAD を動かしてもらって形を決めました。</li>
+    <li>回路は、要件から AI が描きました。</li>
+    <li>基板のレイアウトは、スクリーンショットに描き込んで指示するだけで、すべて AI に直してもらいました。ピンの割り当てを入れ替えるような面倒な直しも、嫌味ひとつ言われずにやってもらえて助かりました。おかげで KiCad の使い方はすっかり忘れてしまいました。</li>
+    <li>基板は早めに発注して、届くまではブレッドボードで動きを見ながらこのサイトを作りました。設計で作った 3D モデルがあったので、手順はアニメで見せています。</li>
+  </ul>
+</section>
+
+<section id="source">
+  <h2>ソースと謝辞</h2>
+  <p class="sub">ファームウェアは <a href="https://github.com/naritaku/gc-abxy" target="_blank" rel="noopener">GitHub（naritaku/gc-abxy）</a>で公開しています。<b>carcon999</b> さんの先行事例（<a href="https://github.com/carcon999/ABXY-buttons" target="_blank" rel="noopener">ABXY-buttons</a>）に着想を得て、回路・基板・ケース・ファームウェアを新規に設計しました（ファームウェアは <a href="https://zmk.dev/" target="_blank" rel="noopener">ZMK</a> / MIT ベース）。</p>
+</section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot-links"><a href="https://github.com/naritaku/gc-abxy">GitHub（ファームウェア）</a> ・ <a href="https://gc-abxy.pages.dev/support">問い合わせ</a> ・ <a href="../specs/">仕様</a> ・ <a href="../making/" aria-current="page">開発記</a> ・ 販売者: naritaku</p>
+    <div class="foot-sec">
+      <h3>この製品についての注記</h3>
+      <p><b>任天堂株式会社の公式製品ではありません。</b>同社および関連会社とは一切関係がなく、許諾・後援・提携も受けていません。「ニンテンドーゲームキューブ」「Nintendo」は任天堂株式会社の商標または登録商標です。<a href="../#legal">詳しい注記</a></p>
+    </div>
+    <div class="foot-sec">
+      <h3>改訂履歴</h3>
+      <p><span data-build-date>2026/10/07</span>　プロトタイプ版を公開</p>
+    </div>
+  </footer>
+
+</div>
+<script src="../assets/manual.js?v=a1acc30118"></script>
+</body>
+</html>

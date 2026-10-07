@@ -1,0 +1,3 @@
+# gc-abxy REV A shield for the Seeed XIAO nRF52840 (board seeeduino_xiao_ble, ZMK v0.3.0)
+config SHIELD_GC_ABXY
+    def_bool $(shields_list_contains,gc_abxy)

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja" data-base="../" data-page="specs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GC ABXY の仕様（大きさ・接続・電源・ファームウェア）</title>
+<meta name="description" content="GC ABXY の仕様一覧。キー、外形、USB とワイヤレスの接続、CR2450 の電池、ZMK ファームウェア。">
+<link rel="canonical" href="https://gc-abxy.pages.dev/specs/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GC ABXY">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="GC ABXY の仕様（大きさ・接続・電源・ファームウェア）">
+<meta property="og:description" content="GC ABXY の仕様一覧。キー、外形、USB とワイヤレスの接続、CR2450 の電池、ZMK ファームウェア。">
+<meta property="og:url" content="https://gc-abxy.pages.dev/specs/">
+<meta property="og:image" content="https://gc-abxy.pages.dev/assets/img/back-on.jpg?v=49c7b770b5">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/icon.svg?v=a9eed07451" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=8b393a4c44">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://gc-abxy.pages.dev/#site", "name": "GC ABXY", "url": "https://gc-abxy.pages.dev/", "inLanguage": "ja"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://gc-abxy.pages.dev/"}, {"@type": "ListItem", "position": 2, "name": "仕様", "item": "https://gc-abxy.pages.dev/specs/"}]}, {"@type": "TechArticle", "headline": "GC ABXY の仕様（大きさ・接続・電源・ファームウェア）", "description": "GC ABXY の仕様一覧。キー、外形、USB とワイヤレスの接続、CR2450 の電池、ZMK ファームウェア。", "inLanguage": "ja", "about": {"@id": "https://gc-abxy.pages.dev/#kit"}, "author": {"@type": "Person", "name": "naritaku", "url": "https://github.com/naritaku"}}]}</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head" id="top">
+    <a class="brand" href="../" aria-label="GC ABXY 取扱説明書のトップへ"><svg viewBox="0 0 100 100" width="100" height="100" role="img">
+        <circle cx="27" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="73" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="27" cy="73" r="16.8" fill="#ce4237"/>
+        <circle cx="73" cy="73" r="16.8" fill="#3fa65a"/>
+      </svg><span><span class="eyebrow">取扱説明書</span><b>GC ABXY</b></span></a>
+  </header>
+
+  <nav id="tabbar" class="tabs" aria-label="ページ">
+    <a href="../">ホーム</a>
+    <a href="../prep/">ビルドガイド</a>
+    <a href="../use/">使い方</a>
+    <a href="../help/">困ったとき</a>
+  </nav>
+
+  <main id="main">
+<h1>仕様</h1>
+<p class="lede">GC ABXY の大きさ・接続・電源・ファームウェアの一覧です。</p>
+
+<section>
+  <h2><span class="n"></span>本体</h2>
+  <div class="tablewrap"><table class="kv"><tbody>
+      <tr><th scope="row">キー</th><td>A・B・X・Y の 4 キー（最初は a・b・x・y）と、接続先の切り替え用の PROFILE ボタン</td></tr>
+      <tr><th scope="row">背面ケースの外形</th><td>直径 54.0 mm、高さ 11.9 mm の円筒形</td></tr>
+      <tr><th scope="row">基板</th><td>直径 48.4 mm の丸い基板</td></tr>
+      <tr><th scope="row">基板の版</th><td>REV A（基板の、部品を付けた面に gc-abxy REV A と印字）。この取説は REV A に合わせています</td></tr>
+      <tr><th scope="row">ケースの材料</th><td>背面ケースは透明レジン（光造形）、電池ぶた・つまみ・キャップは PETG</td></tr>
+      <tr><th scope="row">状態表示</th><td>XIAO の LED（赤・緑・青の組み合わせ）を、透明な背面ケース越しに見る設計</td></tr>
+  </tbody></table></div>
+</section>
+
+<section>
+  <h2><span class="n"></span>接続</h2>
+  <div class="tablewrap"><table class="kv"><tbody>
+      <tr><th scope="row">通信規格</th><td>USB（HID）、Bluetooth® Low Energy（HID over GATT）。無線は別途ご用意いただく XIAO nRF52840 のもので、キットに無線モジュールは含みません</td></tr>
+      <tr><th scope="row">USB</th><td>USB-C（XIAO の端子）。キーボードとして認識され、ペアリングは不要です</td></tr>
+      <tr><th scope="row">ワイヤレス</th><td>3 台まで登録し、PROFILE ボタンで切り替え</td></tr>
+      <tr><th scope="row">優先順位</th><td>パソコンに USB でつないでいる間は USB を優先（ワイヤレスには入力しません）</td></tr>
+      <tr><th scope="row">機器名</th><td>GC-ABXY-XXXX（末尾 4 文字は本体ごとに決まる英数字）</td></tr>
+  </tbody></table></div>
+</section>
+
+<section>
+  <h2><span class="n"></span>電源</h2>
+  <div class="tablewrap"><table class="kv"><tbody>
+      <tr><th scope="row">電池</th><td>CR2450 ×1（充電池 LIR2450 は使えません）</td></tr>
+  </tbody></table></div>
+</section>
+
+<section>
+  <h2><span class="n"></span>ファームウェア</h2>
+  <div class="tablewrap"><table class="kv"><tbody>
+      <tr><th scope="row">もとにしたもの</th><td>ZMK v0.3.0</td></tr>
+      <tr><th scope="row">書き込み方式</th><td>UF2 ブートローダー（USB ドライブとして表示され、ファイルをコピーするだけ。専用ソフト不要）</td></tr>
+      <tr><th scope="row">キーの割り当て</th><td>ZMK Studio（ブラウザで変更。USB 接続、Chrome・Edge）</td></tr>
+      <tr><th scope="row">診断機能</th><td>状態・起動回数・キー入力の記録をブラウザで読み出し（Windows・Mac・Android の Chrome、Windows・Mac の Edge）</td></tr>
+      <tr><th scope="row">ライセンス</th><td>MIT（ソースは GitHub で公開）</td></tr>
+  </tbody></table></div>
+</section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot-links"><a href="https://github.com/naritaku/gc-abxy">GitHub（ファームウェア）</a> ・ <a href="https://gc-abxy.pages.dev/support">問い合わせ</a> ・ <a href="../specs/" aria-current="page">仕様</a> ・ <a href="../making/">開発記</a> ・ 販売者: naritaku</p>
+    <div class="foot-sec">
+      <h3>この製品についての注記</h3>
+      <p><b>任天堂株式会社の公式製品ではありません。</b>同社および関連会社とは一切関係がなく、許諾・後援・提携も受けていません。「ニンテンドーゲームキューブ」「Nintendo」は任天堂株式会社の商標または登録商標です。Bluetooth® のワードマークおよびロゴは Bluetooth SIG, Inc. の登録商標です。本キットは Bluetooth SIG の認証を受けた製品ではなく、無線の機能は別途ご用意いただく XIAO nRF52840（Seeed Studio 製）のものです。<a href="../#legal">詳しい注記</a></p>
+    </div>
+    <div class="foot-sec">
+      <h3>改訂履歴</h3>
+      <p><span data-build-date>2026/10/07</span>　プロトタイプ版を公開</p>
+    </div>
+  </footer>
+
+</div>
+<script src="../assets/manual.js?v=a1acc30118"></script>
+</body>
+</html>

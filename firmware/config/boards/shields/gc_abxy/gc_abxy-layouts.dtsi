@@ -1,0 +1,26 @@
+/*
+ * gc-abxy physical layout: GameCube ABXY cluster (A centre, Y top, X right, B lower-left).
+ * Key positions: 0 = A, 1 = B, 2 = X, 3 = Y. Units are 1/100 key. The rear PROFILE button is not a key (see the overlay).
+ */
+#include <physical_layouts.dtsi>
+
+/ {
+    gc_abxy_layout: gc_abxy_layout {
+        compatible = "zmk,physical-layout";
+        display-name = "GC ABXY";
+
+        /* Sizes and positions follow the real buttons (measured from a 300 dpi scan of the front cover):
+         * A phi16.2 and B phi9.9 as squares (ZMK Studio draws every key as a rectangle with a fixed 4 px corner,
+         * so a circle is not possible), X and Y as 7.5 x 14.6 mm bars tilted to follow their arc around A.
+         * The whole cluster is turned 5 deg counter-clockwise like the real controller (same as the manual figure).
+         * 1 key unit = 19.05 mm; r is 1/100 deg, positive = clockwise; rx/ry is the absolute pivot, set to each key's
+         * own centre (Studio reads rx = 0 as the layout origin, not the key's corner).
+         */
+        keys  //                     w    h    x    y     rot   rx   ry
+            = <&key_physical_attrs  85   85   69   61       0  112  104>   /* A */
+            , <&key_physical_attrs  52   52    0  102       0   26  128>   /* B */
+            , <&key_physical_attrs  39   76  172   63    (-220) 191  101>   /* X */
+            , <&key_physical_attrs  77   39   67    5    (-450) 106   25>   /* Y */
+            ;
+    };
+};

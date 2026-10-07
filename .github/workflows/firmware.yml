@@ -1,0 +1,146 @@
+# Pinned ZMK build for gc-abxy, and the release of gc-abxy.uf2 on a v* tag.
+# Mirrors zmkfirmware/zmk .github/workflows/build-user-config.yml@v0.3.0 instead of calling it, because
+# (1) its ":stable" build image moved to Zephyr 4.1, which does not match ZMK v0.3.0 (Zephyr 3.5), and
+# (2) west init -l takes the manifest dir's parent as the workspace top, so the config under firmware/ needs its own steps.
+# Without `-S studio-rpc-usb-uart` ZMK Studio cannot find the device over USB; a step below fails the build if so.
+name: firmware
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["v*"]
+    paths:
+      - "firmware/**"
+      - ".github/workflows/firmware.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:3.5-branch
+    env:
+      BOARD: seeeduino_xiao_ble
+      SHIELD: gc_abxy
+      SNIPPET: studio-rpc-usb-uart
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache west modules
+        uses: actions/cache@v4
+        continue-on-error: true
+        with:
+          path: |
+            firmware/modules/
+            firmware/tools/
+            firmware/zephyr/
+            firmware/bootloader/
+            firmware/zmk/
+          key: ${{ runner.os }}-zmk-v0.3.0-${{ hashFiles('firmware/config/west.yml') }}
+
+      - name: West init
+        working-directory: firmware
+        run: west init -l config
+
+      - name: West update
+        working-directory: firmware
+        run: west update --fetch-opt=--filter=tree:0
+
+      - name: West zephyr-export
+        working-directory: firmware
+        run: west zephyr-export
+
+      - name: Record pinned revisions
+        working-directory: firmware
+        run: |
+          echo "zmk=$(git -C zmk rev-parse HEAD)" | tee -a $GITHUB_STEP_SUMMARY
+          echo "zephyr=$(git -C zephyr rev-parse HEAD)" | tee -a $GITHUB_STEP_SUMMARY
+
+      - name: West build
+        working-directory: firmware
+        run: |
+          # Firmware version for the BLE Device Information Service (SR-MAINT-04): the tag on a release, dev-<sha7> otherwise.
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then fwrev="$GITHUB_REF_NAME"; else fwrev="dev-$(echo "$GITHUB_SHA" | cut -c1-7)"; fi
+          west build -s zmk/app -d build -b "$BOARD" -S "$SNIPPET" -- \
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/firmware/config" \
+            -DSHIELD="$SHIELD" \
+            -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/firmware/module/gc_abxy" \
+            -DCONFIG_BT_DIS_FW_REV_STR=\"$fwrev\"
+
+      - name: Check the firmware version is exposed over BLE (SR-MAINT-04)
+        run: |
+          cfg=firmware/build/zephyr/.config
+          grep -E '^CONFIG_BT_DIS(_FW_REV|_FW_REV_STR)?=' "$cfg"
+          grep -q '^CONFIG_BT_DIS_FW_REV=y' "$cfg" && grep -qE '^CONFIG_BT_DIS_FW_REV_STR="(v[0-9]|dev-[0-9a-f]{7})' "$cfg" || {
+            echo "::error::BT_DIS firmware revision is missing or was not overridden by CI"; exit 1; }
+
+      - name: Check the diagnostics service is built in (SR-DIAG)
+        run: |
+          cfg=firmware/build/zephyr/.config
+          grep -E '^CONFIG_(GC_ABXY_DIAG|HWINFO|SETTINGS)=' "$cfg"
+          grep -q '^CONFIG_GC_ABXY_DIAG=y' "$cfg" || { echo "::error::CONFIG_GC_ABXY_DIAG is not enabled"; exit 1; }
+
+      - name: Check ZMK Studio has a USB transport
+        run: |
+          cfg=firmware/build/zephyr/.config
+          if grep -q '^CONFIG_ZMK_STUDIO=y' "$cfg" && ! grep -q '^CONFIG_USB_CDC_ACM=y' "$cfg"; then
+            echo "::error::CONFIG_ZMK_STUDIO=y but CONFIG_USB_CDC_ACM is not set. Build with -S studio-rpc-usb-uart."
+            exit 1
+          fi
+          grep -E '^CONFIG_(ZMK_STUDIO|ZMK_STUDIO_LOCKING|USB_CDC_ACM)=' "$cfg" || true
+
+      - name: Check PROFILE swallows A/B/X/Y before the keymap sees them
+        # mgmt.c relies on its zmk_position_state_changed listener running before ZMK's keymap listener.
+        # ZMK calls listeners in link order; fail here if that ever changes.
+        run: |
+          NM=$(find /opt -name arm-zephyr-eabi-nm -type f 2>/dev/null | head -1); NM=${NM:-nm}
+          order=$("$NM" -n firmware/build/zephyr/zmk.elf \
+            | grep -oE 'zmk_event_sub_(gc_mgmt|keymap)zmk_position_state_changed$' | tr '\n' ' ')
+          echo "listener order: $order"
+          if [ "$order" != "zmk_event_sub_gc_mgmtzmk_position_state_changed zmk_event_sub_keymapzmk_position_state_changed " ]; then
+            echo "::error::gc_mgmt must be linked before keymap, or A/B/X/Y are not suppressed while PROFILE is held"
+            exit 1
+          fi
+
+      - name: Collect artifacts
+        run: |
+          mkdir -p out
+          cp firmware/build/zephyr/zmk.uf2 out/gc-abxy.uf2
+          cp firmware/build/zephyr/.config out/gc-abxy.config
+          cp firmware/build/zephyr/zephyr.dts out/gc-abxy.dts
+          ls -la out
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: out/
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: firmware
+          path: firmware
+      - name: gc-abxy.uf2 ができているか確かめる
+        run: ls -l firmware && test -f firmware/gc-abxy.uf2
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            firmware/gc-abxy.uf2
+            THIRD-PARTY-NOTICES.md
+          generate_release_notes: true
+      # A release made with GITHUB_TOKEN does not start other workflows, but workflow_dispatch does: redeploy the
+      # site so /fw stops pointing at the coming-soon page.
+      - name: サイトを出し直す（/fw をダウンロードに向ける）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run site.yml --repo "${{ github.repository }}" --ref main

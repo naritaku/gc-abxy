@@ -1,0 +1,6 @@
+# Voltage-divider battery gauge with a CR2450 (3 V primary) state-of-charge table
+description: CR2450 battery SoC monitoring using a voltage divider
+
+compatible: "gc,battery-cr2450"
+
+include: voltage-divider.yaml

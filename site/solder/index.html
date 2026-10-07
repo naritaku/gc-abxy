@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja" data-base="../" data-page="solder">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GC ABXY のはんだ付け（付ける部品は 4 つ）</title>
+<meta name="description" content="GC ABXY の基板に XIAO・電池ホルダー・スライドスイッチ・タクトスイッチをはんだ付けする手順と、テスターでのショートの確かめ方。">
+<link rel="canonical" href="https://gc-abxy.pages.dev/solder/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GC ABXY">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="GC ABXY のはんだ付け（付ける部品は 4 つ）">
+<meta property="og:description" content="GC ABXY の基板に XIAO・電池ホルダー・スライドスイッチ・タクトスイッチをはんだ付けする手順と、テスターでのショートの確かめ方。">
+<meta property="og:url" content="https://gc-abxy.pages.dev/solder/">
+<meta property="og:image" content="https://gc-abxy.pages.dev/assets/img/back-on.jpg?v=49c7b770b5">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/icon.svg?v=a9eed07451" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=8b393a4c44">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://gc-abxy.pages.dev/#site", "name": "GC ABXY", "url": "https://gc-abxy.pages.dev/", "inLanguage": "ja"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://gc-abxy.pages.dev/"}, {"@type": "ListItem", "position": 2, "name": "はんだ付け", "item": "https://gc-abxy.pages.dev/solder/"}]}, {"@type": "HowTo", "name": "GC ABXY のはんだ付け", "description": "GC ABXY の基板に XIAO・電池ホルダー・スライドスイッチ・タクトスイッチをはんだ付けする手順と、テスターでのショートの確かめ方。", "inLanguage": "ja", "about": {"@id": "https://gc-abxy.pages.dev/#kit"}, "supply": [{"@type": "HowToSupply", "name": "XIAO nRF52840（102010448）"}, {"@type": "HowToSupply", "name": "電池ホルダー CH274-2450LF"}, {"@type": "HowToSupply", "name": "スライドスイッチ SSSS213202"}, {"@type": "HowToSupply", "name": "タクトスイッチ TS-06104"}], "tool": [{"@type": "HowToTool", "name": "はんだごてとはんだ"}, {"@type": "HowToTool", "name": "テスター"}], "step": [{"@type": "HowToStep", "name": "XIAO を付ける", "text": "USB 端子が基板のふちからはみ出す向きで、XIAO の USB と反対側（アンテナ側）の端を、白い線の端に合わせます。左右 14 本の足すべてをはんだ付けします。"}, {"@type": "HowToStep", "name": "電池ホルダーを付ける", "text": "基板の ＋ の印にプラス側の足（電池を上から押さえつける端子側）を合わせ、たっぷりのはんだで留めます。"}, {"@type": "HowToStep", "name": "スライドスイッチを付ける", "text": "6 本の足すべてをはんだ付けします。"}, {"@type": "HowToStep", "name": "タクトスイッチを付ける", "text": "4 本の足を四角いパッドに合わせ、すべてはんだ付けします。"}, {"@type": "HowToStep", "name": "ボタンとの接点部分を確かめる", "text": "フラックスやはんだくずが付いていたら、無水エタノールを含ませた綿棒で拭きます。"}, {"@type": "HowToStep", "name": "電池ホルダーの＋の端子と−の端子が鳴り続けないか", "text": "当てた瞬間に一瞬だけ鳴ることがありますが、正常です。鳴り続けたら、電池ホルダーとスライドスイッチの足のまわりで、はんだがつながっていないか確かめます。"}, {"@type": "HowToStep", "name": "タクトスイッチの PROFILE の足と XIAO の GND が鳴らないか", "text": "PROFILE の足は、タクトスイッチの XIAO 側の上の足です。鳴ったら、タクトスイッチの足どうしがはんだでつながっています。はんだ吸い取り線で余分なはんだを取ります。"}, {"@type": "HowToStep", "name": "スライドスイッチを OFF 側にして、電池ホルダーの＋の端子と図の BAT の穴が鳴らないか", "text": "鳴ったら、スライドスイッチの足どうしがはんだでつながっています。はんだ吸い取り線で余分なはんだを取ります。"}, {"@type": "HowToStep", "name": "XIAO の隣り合う足どうしが鳴らないか", "text": "左右の列それぞれで、上から順に隣の足と当てていきます。当てた瞬間に一瞬だけ鳴ることがありますが、正常です。鳴り続けたら、その 2 本の足のあいだではんだがつながっています。はんだ吸い取り線で余分なはんだを取ります。"}, {"@type": "HowToStep", "name": "電池ホルダーの＋の端子と図の BAT の穴が鳴るか", "text": "鳴らなければ、電池ホルダーの＋の足か、スライドスイッチの足のはんだが足りません。"}, {"@type": "HowToStep", "name": "電池ホルダーの−の端子と XIAO の GND が鳴るか", "text": "鳴らなければ、電池ホルダーの−の足か、XIAO の GND の足のはんだが足りません。"}, {"@type": "HowToStep", "name": "タクトスイッチを押しながら、PROFILE の足と XIAO の GND が鳴るか", "text": "鳴らなければ、PROFILE の足か、反対側の下の足のはんだが足りません。"}]}]}</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head" id="top">
+    <a class="brand" href="../" aria-label="GC ABXY 取扱説明書のトップへ"><svg viewBox="0 0 100 100" width="100" height="100" role="img">
+        <circle cx="27" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="73" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="27" cy="73" r="16.8" fill="#ce4237"/>
+        <circle cx="73" cy="73" r="16.8" fill="#3fa65a"/>
+      </svg><span><span class="eyebrow">取扱説明書</span><b>GC ABXY</b></span></a>
+  </header>
+
+  <nav id="tabbar" class="tabs" aria-label="ページ">
+    <a href="../">ホーム</a>
+    <a href="../prep/" aria-current="page">ビルドガイド</a>
+    <a href="../use/">使い方</a>
+    <a href="../help/">困ったとき</a>
+  </nav>
+
+  <main id="main">
+<nav class="stepbar" aria-label="ビルドガイドの段階"><ol><li><a href="../prep/"><span>1</span>準備</a></li><li><a href="../solder/" aria-current="step"><span>2</span>はんだ付け</a></li><li><a href="../build/"><span>3</span>組み立て</a></li><li><a href="../firmware/"><span>4</span>書き込み</a></li></ol></nav>
+<h1>はんだ付け</h1>
+<p class="lede"><span class="ln">はんだ付けは <b>20〜40 分</b>、初めての方は 1 時間ほどかかる見込みです。</span></p>
+
+  <section id="solder">
+    <h2><span class="n"></span>はんだ付けする</h2>
+    <p class="sub"><span class="ln"><b>小さい部品がすでに付いている面</b>にはんだ付けします。</span><span class="ln"><b>基板はふちを持ち</b>、ボタンとの接点部分には素手で触れないようにします。</span></p>
+    <div class="scrolly">
+      <div class="stage anim"><div class="stage-in"><div class="frame on" data-frame="anim"><svg class="asmv" viewBox="0 84 420 132" role="img" aria-label="横から見た組み立ての様子">
+  <g transform="translate(-20 0)"><g class="asm">
+    <g class="el" data-el="face">
+      <path d="M90 150h10v28h200v-28h10v42H90z" fill="var(--xy)"/>
+      <rect x="118" y="192" width="26" height="10" rx="4" fill="var(--b)"/>
+      <rect x="178" y="192" width="44" height="14" rx="5" fill="var(--a)"/>
+      <rect x="248" y="192" width="18" height="11" rx="4" fill="var(--xy)" stroke="var(--ink-3)"/>
+      <rect x="274" y="192" width="22" height="9" rx="4" fill="var(--xy)" stroke="var(--ink-3)"/>
+      <g class="lab"><path d="M312 186L324 200" stroke="var(--line-strong)" fill="none"/><text x="328" y="204">ボタン面のケース</text></g>
+    </g>
+    <g class="el" data-el="rubber"><rect x="100" y="170" width="200" height="8" rx="2" fill="#303036" stroke="var(--ink-3)"/><g class="lab"><path d="M312 174L324 182" stroke="var(--line-strong)" fill="none"/><text x="328" y="186">ゴムシート</text></g></g>
+    <g class="el" data-el="geta"><rect x="104" y="160" width="192" height="10" rx="2" fill="var(--surface-2)" stroke="var(--ink-3)"/><g class="lab"><path d="M312 165L324 162" stroke="var(--line-strong)" fill="none"/><text x="328" y="166">中枠</text></g></g>
+    <g class="el" data-el="oldback"><path d="M90 150v-10q0-14 14-14h192q14 0 14 14v10z" fill="var(--xy)" stroke="var(--ink-3)"/><g class="lab"><path d="M312 138L324 136" stroke="var(--line-strong)" fill="none"/><text x="328" y="140">もとの背面ケース</text></g></g>
+    <g class="el" data-el="oldscrews" fill="var(--ink-3)"><rect x="125" y="118" width="10" height="4" rx="1"/><rect x="128.8" y="122" width="2.4" height="30"/><rect x="265" y="118" width="10" height="4" rx="1"/><rect x="268.8" y="122" width="2.4" height="30"/></g>
+    <g class="el" data-el="board">
+      <rect x="104" y="162" width="192" height="7" rx="2" fill="#2f7d4b"/>
+      <g fill="#d9a93a"><rect x="122" y="169" width="22" height="2"/><rect x="162" y="169" width="22" height="2"/><rect x="214" y="169" width="22" height="2"/><rect x="254" y="169" width="22" height="2"/></g>
+      <g class="el" data-el="xiao"><rect x="146" y="152" width="16" height="8" rx="2" fill="#c7cad2"/><rect x="160" y="150" width="52" height="12" rx="1" fill="#3a3d45" stroke="#6b6f7a"/><rect x="168" y="146" width="34" height="4" fill="#b8bcc6"/></g>
+      <g class="el" data-el="holder"><rect x="224" y="154" width="60" height="8" rx="1" fill="#b8bcc6" stroke="#8d919c"/></g>
+      <g class="el" data-el="slide"><rect x="114" y="155" width="13" height="7" fill="#c7cad2"/><rect x="118.5" y="151" width="4" height="4" fill="#8d919c"/></g>
+      <g class="el" data-el="tact"><rect x="132" y="156" width="14" height="6" fill="#50535c"/><rect x="137" y="153" width="4" height="3" fill="#8d919c"/></g>
+      <g class="lab"><path d="M312 166L324 158" stroke="var(--line-strong)" fill="none"/><text x="328" y="162">基板</text></g>
+    </g>
+    <g class="el" data-el="knob"><rect x="115" y="140" width="11" height="12" rx="2" fill="var(--accent)"/></g>
+    <g class="el" data-el="cap"><rect x="132" y="142" width="14" height="12" rx="2" fill="var(--accent)"/></g>
+    <g class="el" data-el="batt"><rect x="232" y="147" width="46" height="6" rx="3" fill="#c9ccd4" stroke="#8d919c"/></g>
+    <g class="el" data-el="back"><path d="M90 150v-26q0-14 14-14h192q14 0 14 14v26" fill="color-mix(in srgb, var(--accent) 16%, transparent)" stroke="var(--accent)" stroke-width="2"/><g class="lab"><path d="M312 124L324 120" stroke="var(--line-strong)" fill="none"/><text x="328" y="124">背面ケース</text></g></g>
+    <g class="el" data-el="door"><rect x="230" y="104" width="50" height="6" rx="3" fill="var(--accent)"/></g>
+    <g class="el" data-el="screws" fill="var(--accent)"><rect x="125" y="106" width="10" height="4" rx="1"/><rect x="128.8" y="110" width="2.4" height="40"/><rect x="265" y="106" width="10" height="4" rx="1"/><rect x="268.8" y="110" width="2.4" height="40"/></g>
+  </g></g>
+</svg></div><span class="stage-n" aria-hidden="true">手順 1</span></div></div>
+    <ol class="steps">
+      <li data-clip="hw-solder-1-xiao" data-scene="0-1"><span class="what">XIAO を付ける</span><span class="how">USB 端子が基板のふちからはみ出す向きで、XIAO の USB と反対側（アンテナ側）の端を、白い線の端に合わせます。左右 <b>14 本の足すべて</b>をはんだ付けします。</span></li>
+      <li data-clip="hw-solder-2-holder" data-scene="2"><span class="what">電池ホルダーを付ける</span><span class="how">基板の <b>＋</b> の印にプラス側の足（電池を上から押さえつける端子側）を合わせ、たっぷりのはんだで留めます。</span></li>
+      <li data-clip="hw-solder-3-slide" data-scene="3"><span class="what">スライドスイッチを付ける</span><span class="how"><b>6 本の足すべて</b>をはんだ付けします。</span></li>
+      <li data-clip="hw-solder-4-tact" data-scene="4"><span class="what">タクトスイッチを付ける</span><span class="how">4 本の足を四角いパッドに合わせ、<b>すべて</b>はんだ付けします。</span></li>
+      <li data-scene="4"><span class="what">ボタンとの接点部分を確かめる</span><span class="how">フラックスやはんだくずが付いていたら、無水エタノールを含ませた綿棒で拭きます。</span></li>
+    </ol>
+    </div>
+  </section>
+
+  <section id="solder-check">
+    <h2><span class="n"></span>はんだ付けの確認</h2>
+    <p class="sub">電池を入れる前に、テスターを導通（ブザー）モードにして、電源がショートしていないことと、スイッチが働くことを確かめます。</p>
+    <h3>ショートしていないことの確認（鳴らないこと）</h3>
+    <p>スライドスイッチを、基板の <b>ON</b> の印字側にしておきます。</p>
+    <div class="scrolly">
+      <div class="stage photo"><div class="stage-in"><div class="frame on" data-frame="sw-on"><div class="render-img board-top sw-on" role="img" aria-label="はんだ付けを終えた基板を真上から見た図。スライドスイッチは ON 側。テスターを当てる場所に印を付けている"><svg viewBox="0 0 1040 1040" aria-hidden="true"><g class="mk" data-n="PM"><circle cx="299" cy="743" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="299" cy="743" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><circle cx="943" cy="641" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="943" cy="641" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><rect x="130" y="800" width="140" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="200.0" y="834" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">電池 ＋</text><rect x="855" y="690" width="140" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="925.0" y="724" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">電池 −</text></g><g class="mk" data-n="PG"><circle cx="292" cy="355" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="292" cy="355" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><circle cx="682" cy="118" r="24" fill="none" stroke="#fff" stroke-width="16"/><circle cx="682" cy="118" r="24" fill="none" stroke="#574c9b" stroke-width="9"/><rect x="330" y="385" width="210" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="435.0" y="419" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">PROFILE の足</text><rect x="725" y="68" width="110" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="780.0" y="102" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">GND</text></g><g class="mk" data-n="PB"><circle cx="299" cy="743" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="299" cy="743" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><circle cx="127" cy="300" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="127" cy="300" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><rect x="130" y="800" width="140" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="200.0" y="834" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">電池 ＋</text><rect x="20" y="225" width="110" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="75.0" y="259" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">BAT</text></g><g class="mk" data-n="XP"><circle cx="359" cy="68" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="68" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="118" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="118" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="168" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="168" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="218" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="218" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="268" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="268" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="320" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="320" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="372" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="372" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="68" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="68" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="118" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="118" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="168" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="168" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="218" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="218" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="268" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="268" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="320" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="320" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="372" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="372" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><rect x="400" y="432" width="240" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="520.0" y="466" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">XIAO の足</text></g></svg></div></div><div class="frame" data-frame="sw-off"><div class="render-img board-top" role="img" aria-label="はんだ付けを終えた基板を真上から見た図。スライドスイッチは OFF 側。テスターを当てる場所に印を付けている"><svg viewBox="0 0 1040 1040" aria-hidden="true"><g class="mk" data-n="PM"><circle cx="299" cy="743" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="299" cy="743" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><circle cx="943" cy="641" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="943" cy="641" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><rect x="130" y="800" width="140" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="200.0" y="834" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">電池 ＋</text><rect x="855" y="690" width="140" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="925.0" y="724" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">電池 −</text></g><g class="mk" data-n="PG"><circle cx="292" cy="355" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="292" cy="355" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><circle cx="682" cy="118" r="24" fill="none" stroke="#fff" stroke-width="16"/><circle cx="682" cy="118" r="24" fill="none" stroke="#574c9b" stroke-width="9"/><rect x="330" y="385" width="210" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="435.0" y="419" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">PROFILE の足</text><rect x="725" y="68" width="110" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="780.0" y="102" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">GND</text></g><g class="mk" data-n="PB"><circle cx="299" cy="743" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="299" cy="743" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><circle cx="127" cy="300" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="127" cy="300" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><rect x="130" y="800" width="140" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="200.0" y="834" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">電池 ＋</text><rect x="20" y="225" width="110" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="75.0" y="259" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">BAT</text></g><g class="mk" data-n="XP"><circle cx="359" cy="68" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="68" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="118" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="118" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="168" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="168" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="218" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="218" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="268" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="268" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="320" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="320" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="359" cy="372" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="359" cy="372" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="68" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="68" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="118" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="118" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="168" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="168" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="218" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="218" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="268" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="268" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="320" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="320" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><circle cx="682" cy="372" r="22" fill="none" stroke="#fff" stroke-width="12"/><circle cx="682" cy="372" r="22" fill="none" stroke="#574c9b" stroke-width="7"/><rect x="400" y="432" width="240" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="520.0" y="466" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">XIAO の足</text></g></svg></div></div><span class="stage-n" aria-hidden="true">手順 1</span></div></div>
+    <ol class="steps">
+      <li data-mark="PM" data-frame="sw-on"><span class="what">電池ホルダーの＋の端子と−の端子が<b>鳴り続けないか</b></span><span class="how">当てた瞬間に一瞬だけ鳴ることがありますが、正常です。鳴り続けたら、電池ホルダーとスライドスイッチの足のまわりで、はんだがつながっていないか確かめます。</span></li>
+      <li data-mark="PG" data-frame="sw-on"><span class="what">タクトスイッチの PROFILE の足と XIAO の <code>GND</code> が<b>鳴らないか</b></span><span class="how">PROFILE の足は、タクトスイッチの XIAO 側の上の足です。鳴ったら、タクトスイッチの足どうしがはんだでつながっています。はんだ吸い取り線で余分なはんだを取ります。</span></li>
+      <li data-mark="PB" data-frame="sw-off"><span class="what">スライドスイッチを <b>OFF</b> 側にして、電池ホルダーの＋の端子と図の <code>BAT</code> の穴が<b>鳴らないか</b></span><span class="how">鳴ったら、スライドスイッチの足どうしがはんだでつながっています。はんだ吸い取り線で余分なはんだを取ります。</span></li>
+      <li data-mark="XP" data-frame="sw-off"><span class="what">XIAO の隣り合う足どうしが<b>鳴らないか</b></span><span class="how">左右の列それぞれで、上から順に隣の足と当てていきます。当てた瞬間に一瞬だけ鳴ることがありますが、正常です。鳴り続けたら、その 2 本の足のあいだではんだがつながっています。はんだ吸い取り線で余分なはんだを取ります。</span></li>
+    </ol>
+    </div>
+    <h3>導通の確認（鳴ること）</h3>
+    <p>スライドスイッチを <b>ON</b> 側に戻します。</p>
+    <div class="scrolly">
+      <div class="stage photo"><div class="stage-in"><div class="frame on" data-frame="board"><div class="render-img board-top sw-on" role="img" aria-label="はんだ付けを終えた基板を真上から見た図。スライドスイッチは ON 側。テスターを当てる場所に印を付けている"><svg viewBox="0 0 1040 1040" aria-hidden="true"><g class="mk" data-n="PB"><circle cx="299" cy="743" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="299" cy="743" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><circle cx="127" cy="300" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="127" cy="300" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><rect x="130" y="800" width="140" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="200.0" y="834" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">電池 ＋</text><rect x="20" y="225" width="110" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="75.0" y="259" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">BAT</text></g><g class="mk" data-n="MG"><circle cx="943" cy="641" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="943" cy="641" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><circle cx="682" cy="118" r="24" fill="none" stroke="#fff" stroke-width="16"/><circle cx="682" cy="118" r="24" fill="none" stroke="#574c9b" stroke-width="9"/><rect x="855" y="690" width="140" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="925.0" y="724" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">電池 −</text><rect x="725" y="68" width="110" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="780.0" y="102" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">GND</text></g><g class="mk" data-n="PG"><circle cx="292" cy="355" r="34" fill="none" stroke="#fff" stroke-width="16"/><circle cx="292" cy="355" r="34" fill="none" stroke="#574c9b" stroke-width="9"/><circle cx="682" cy="118" r="24" fill="none" stroke="#fff" stroke-width="16"/><circle cx="682" cy="118" r="24" fill="none" stroke="#574c9b" stroke-width="9"/><rect x="330" y="385" width="210" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="435.0" y="419" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">PROFILE の足</text><rect x="725" y="68" width="110" height="50" rx="25" fill="#fff" stroke="#574c9b" stroke-width="4"/><text x="780.0" y="102" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-size="30" font-weight="700" fill="#2b2540">GND</text></g></svg></div></div><span class="stage-n" aria-hidden="true">手順 1</span></div></div>
+    <ol class="steps">
+      <li data-mark="PB"><span class="what">電池ホルダーの＋の端子と図の <code>BAT</code> の穴が<b>鳴るか</b></span><span class="how">鳴らなければ、電池ホルダーの＋の足か、スライドスイッチの足のはんだが足りません。</span></li>
+      <li data-mark="MG"><span class="what">電池ホルダーの−の端子と XIAO の <code>GND</code> が<b>鳴るか</b></span><span class="how">鳴らなければ、電池ホルダーの−の足か、XIAO の <code>GND</code> の足のはんだが足りません。</span></li>
+      <li data-mark="PG"><span class="what">タクトスイッチを押しながら、PROFILE の足と XIAO の <code>GND</code> が<b>鳴るか</b></span><span class="how">鳴らなければ、PROFILE の足か、反対側の下の足のはんだが足りません。</span></li>
+    </ol>
+    </div>
+    <p>確認が終わったら、基板のスライドスイッチを <b>OFF</b> の印字側にしておきます。</p>
+  </section>
+
+  <section id="to-assemble">
+    <a class="go" href="../build/">組み立てへ</a>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot-links"><a href="https://github.com/naritaku/gc-abxy">GitHub（ファームウェア）</a> ・ <a href="https://gc-abxy.pages.dev/support">問い合わせ</a> ・ <a href="../specs/">仕様</a> ・ <a href="../making/">開発記</a> ・ 販売者: naritaku</p>
+    <div class="foot-sec">
+      <h3>この製品についての注記</h3>
+      <p><b>任天堂株式会社の公式製品ではありません。</b>同社および関連会社とは一切関係がなく、許諾・後援・提携も受けていません。「ニンテンドーゲームキューブ」「Nintendo」は任天堂株式会社の商標または登録商標です。<a href="../#legal">詳しい注記</a></p>
+    </div>
+    <div class="foot-sec">
+      <h3>改訂履歴</h3>
+      <p><span data-build-date>2026/10/07</span>　プロトタイプ版を公開</p>
+    </div>
+  </footer>
+
+</div>
+<script>window.GC_MEDIA={"hw-solder-1-xiao": {"p": "anim/hw-solder-1-xiao.webp?v=492c163081", "m": "anim/hw-solder-1-xiao.mp4?v=33321d036c", "w": "anim/hw-solder-1-xiao.webm?v=2caf88fd84"}, "hw-solder-2-holder": {"p": "anim/hw-solder-2-holder.webp?v=7f74620f70", "m": "anim/hw-solder-2-holder.mp4?v=f9f6454415", "w": "anim/hw-solder-2-holder.webm?v=554cb1cc19"}, "hw-solder-3-slide": {"p": "anim/hw-solder-3-slide.webp?v=f35e5f853a", "m": "anim/hw-solder-3-slide.mp4?v=a1a3453b6d", "w": "anim/hw-solder-3-slide.webm?v=4551f155b1"}, "hw-solder-4-tact": {"p": "anim/hw-solder-4-tact.webp?v=f45d54be6d", "m": "anim/hw-solder-4-tact.mp4?v=8262a7950b", "w": "anim/hw-solder-4-tact.webm?v=5d0e2a4cce"}};</script>
+<script src="../assets/manual.js?v=a1acc30118"></script>
+</body>
+</html>

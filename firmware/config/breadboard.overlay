@@ -1,0 +1,14 @@
+/*
+ * Breadboard variant (XIAO + bare tact switches, no external pull-ups): enable the internal pull-ups on the key
+ * lines. REV A has 100 k pull-ups R3..R6 on the board, so the default shield build leaves them off.
+ * PROFILE (gc_profile_button) already uses the internal pull-up in the shield.
+ * Applied with -DEXTRA_DTC_OVERLAY_FILE (see .github/workflows/firmware-build.yml).
+ */
+&kscan0 {
+    input-gpios
+        = <&xiao_d 7  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&xiao_d 8  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&xiao_d 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&xiao_d 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        ;
+};

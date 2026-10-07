@@ -1,0 +1,6 @@
+if SHIELD_GC_ABXY
+
+config ZMK_KEYBOARD_NAME
+    default "GC-ABXY"
+
+endif

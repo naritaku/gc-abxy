@@ -1,0 +1,10 @@
+# gc-abxy rear PROFILE button. Read by module/gc_abxy/src/mgmt.c, not by kscan, so it is not a keymap position.
+description: gc-abxy PROFILE / management button
+
+compatible: "gc,profile-button"
+
+properties:
+  gpios:
+    type: phandle-array
+    required: true
+    description: Button input (active low, pull-up as needed)

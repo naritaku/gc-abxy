@@ -1,0 +1,13 @@
+# ZMK user-config manifest for gc-abxy. Pinned revision decided 2026-09-22; see the README.
+# v0.3.0 = commit edf5c0814fd3ea202e43aad2d68fd32e882a518c (2025-08-01). Zephyr v3.5.0+zmk-fixes comes from ZMK's own manifest.
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: edf5c0814fd3ea202e43aad2d68fd32e882a518c   # tag v0.3.0
+      import: app/west.yml
+  self:
+    path: config

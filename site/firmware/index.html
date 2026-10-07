@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja" data-base="../" data-page="firmware">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GC ABXY のプログラム書き込みとキーの割り当て変更</title>
+<meta name="description" content="GC ABXY にプログラム（ZMK ファームウェア）を書き込む手順と、ZMK Studio で A・B・X・Y の割り当てを変える方法。">
+<link rel="canonical" href="https://gc-abxy.pages.dev/firmware/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GC ABXY">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="GC ABXY のプログラム書き込みとキーの割り当て変更">
+<meta property="og:description" content="GC ABXY にプログラム（ZMK ファームウェア）を書き込む手順と、ZMK Studio で A・B・X・Y の割り当てを変える方法。">
+<meta property="og:url" content="https://gc-abxy.pages.dev/firmware/">
+<meta property="og:image" content="https://gc-abxy.pages.dev/assets/img/back-on.jpg?v=49c7b770b5">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/icon.svg?v=a9eed07451" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=8b393a4c44">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://gc-abxy.pages.dev/#site", "name": "GC ABXY", "url": "https://gc-abxy.pages.dev/", "inLanguage": "ja"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://gc-abxy.pages.dev/"}, {"@type": "ListItem", "position": 2, "name": "書き込み", "item": "https://gc-abxy.pages.dev/firmware/"}]}, {"@type": "HowTo", "name": "GC ABXY にファームウェアを書き込み、キーの割り当てを変える", "description": "GC ABXY にプログラム（ZMK ファームウェア）を書き込む手順と、ZMK Studio で A・B・X・Y の割り当てを変える方法。", "inLanguage": "ja", "about": {"@id": "https://gc-abxy.pages.dev/#kit"}, "step": [{"@type": "HowToStep", "name": "ファイルをパソコンに保存する", "text": "gc-abxy.pages.dev/fw を開くと、最新の gc-abxy.uf2 がダウンロードされます。自動で始まらないときは、リリースページ（GitHub）から gc-abxy.uf2 をダウンロードします。"}, {"@type": "HowToStep", "name": "USB でパソコンにつなぐ", "text": "データが通る USB-C ケーブルを使います。充電専用のケーブルでは書き込めません。"}, {"@type": "HowToStep", "name": "リセットボタンを素早く 2 回押す", "text": "ゼムクリップなど先の細い物でリセットボタン（図の 1）を、0.5 秒以内に 2 回押します。"}, {"@type": "HowToStep", "name": "ドライブが表示されたか確かめる", "text": "XIAO-SENSE か XIAO-BLE の名前で、USB メモリと同じように表示されます。どちらでも正常です。"}, {"@type": "HowToStep", "name": "gc-abxy.uf2 をドライブにドラッグする", "text": "コピーが終わると自動で再起動し、ドライブは消えます。Mac で「ディスクの不正な取り出し」や「エラーコード -36」が表示されても正常です。"}, {"@type": "HowToStep", "name": "キーボードになったか確かめる", "text": "メモ帳などを開いて 4 つのボタンを押し、a b x y と入力されれば正常です。"}, {"@type": "HowToStep", "name": "USB を抜いて、電源スイッチを ON にする", "text": "つまみを、基板の ON の印字側へ動かします。LED が白く 1 回点滅すれば完成です（電池が残り少ないときは黄色）。"}, {"@type": "HowToStep", "name": "USB でパソコンにつなぐ", "text": "USB でパソコンにつなぐ"}, {"@type": "HowToStep", "name": "ZMK Studio を開く", "text": "パソコンの Chrome か Edge で zmk.studio を開きます。スマホや Safari・Firefox では使えません。"}, {"@type": "HowToStep", "name": "「USB」を押し、GC-ABXY を選んで「接続」を押す", "text": "ブラウザが開く小さなウィンドウに、つないでいる機器の一覧が表示されます。"}, {"@type": "HowToStep", "name": "画面上の変えたいキーを押し、下の Key 欄で新しいキーを選ぶ", "text": "2 の欄に enter などと入力すると、候補が絞れます。"}, {"@type": "HowToStep", "name": "右上の保存ボタンを押す", "text": "押さないと、電源を切ったときに元に戻ります。"}]}, {"@type": "SoftwareSourceCode", "name": "GC ABXY firmware", "codeRepository": "https://github.com/naritaku/gc-abxy", "programmingLanguage": "C", "runtimePlatform": "ZMK", "license": "https://opensource.org/licenses/MIT"}]}</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head" id="top">
+    <a class="brand" href="../" aria-label="GC ABXY 取扱説明書のトップへ"><svg viewBox="0 0 100 100" width="100" height="100" role="img">
+        <circle cx="27" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="73" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="27" cy="73" r="16.8" fill="#ce4237"/>
+        <circle cx="73" cy="73" r="16.8" fill="#3fa65a"/>
+      </svg><span><span class="eyebrow">取扱説明書</span><b>GC ABXY</b></span></a>
+  </header>
+
+  <nav id="tabbar" class="tabs" aria-label="ページ">
+    <a href="../">ホーム</a>
+    <a href="../prep/" aria-current="page">ビルドガイド</a>
+    <a href="../use/">使い方</a>
+    <a href="../help/">困ったとき</a>
+  </nav>
+
+  <main id="main">
+<nav class="stepbar" aria-label="ビルドガイドの段階"><ol><li><a href="../prep/"><span>1</span>準備</a></li><li><a href="../solder/"><span>2</span>はんだ付け</a></li><li><a href="../build/"><span>3</span>組み立て</a></li><li><a href="../firmware/" aria-current="step"><span>4</span>書き込み</a></li></ol></nav>
+<h1>プログラムの書き込み</h1>
+<p class="lede">組み立てが終わったら、パソコンにつないでプログラム（ファームウェア）を書き込みます。</p>
+
+
+  <section id="flash">
+    <h2><span class="n"></span>プログラムを書き込む</h2>
+    <div class="scrolly">
+      <div class="stage photo"><div class="stage-in"><div class="frame on" data-frame="back"><div class="render-img back" role="img" aria-label="背面ケース側から見た完成品。USB 端子の左に XIAO のリセットボタン"><svg viewBox="0 0 1400 1400" aria-hidden="true"><circle cx="566" cy="143" r="40" fill="none" stroke="#fff" stroke-width="7" stroke-dasharray="14 10"/><circle cx="511" cy="88" r="38" fill="#574c9b" stroke="#fff" stroke-width="6"/><text x="511" y="107" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="54" font-weight="700" fill="#fff">1</text></svg></div></div><span class="stage-n" aria-hidden="true">手順 1</span></div><div class=stage-caps><p class="on" data-frame="back">背面ケース側から見た図です。ケースの外からでも、先の細い物でリセットボタンを押せます。<span class="leg"><i>1</i>リセットボタン</span></p></div></div>
+    <ol class="steps">
+      <li data-mark="0"><span class="what">ファイルをパソコンに保存する</span><span class="how"><a href="https://gc-abxy.pages.dev/fw">gc-abxy.pages.dev/fw</a> を開くと、最新の <code>gc-abxy.uf2</code> がダウンロードされます。自動で始まらないときは、<a href="https://gc-abxy.pages.dev/releases">リリースページ</a>（GitHub）から <code>gc-abxy.uf2</code> をダウンロードします。</span></li>
+      <li data-clip="sw-flash-2-usb" data-mark="0"><span class="what">USB でパソコンにつなぐ</span><span class="how"><b>データが通る USB-C ケーブル</b>を使います。充電専用のケーブルでは書き込めません。</span></li>
+      <li data-clip="sw-flash-3-reset" data-mark="1"><span class="what">リセットボタンを素早く 2 回押す</span><span class="how"><b>ゼムクリップなど先の細い物</b>で<b>リセットボタン</b>（図の <b>1</b>）を、<b>0.5 秒以内に 2 回</b>押します。</span></li>
+      <li data-mark="0"><span class="what">ドライブが表示されたか確かめる</span><span class="how"><code>XIAO-SENSE</code> か <code>XIAO-BLE</code> の名前で、USB メモリと同じように表示されます。どちらでも正常です。</span></li>
+      <li data-mark="0"><span class="what"><code>gc-abxy.uf2</code> をドライブにドラッグする</span><span class="how">コピーが終わると自動で再起動し、ドライブは消えます。Mac で「ディスクの不正な取り出し」や「エラーコード -36」が表示されても正常です。</span></li>
+      <li data-mark="0"><span class="what">キーボードになったか確かめる</span><span class="how">メモ帳などを開いて 4 つのボタンを押し、<kbd>a</kbd> <kbd>b</kbd> <kbd>x</kbd> <kbd>y</kbd> と入力されれば正常です。</span></li>
+      <li data-clip="sw-flash-7-poweron" data-mark="0"><span class="what">USB を抜いて、電源スイッチを ON にする</span><span class="how">つまみを、基板の <b>ON</b> の印字側へ動かします。<b>LED が白く 1 回点滅すれば完成です</b>（電池が残り少ないときは黄色）。</span></li>
+    </ol>
+    </div>
+    <div class="note">
+      <h3>うまく書き込めないときは</h3>
+      <p><b>ドライブが表示されない</b>: USB を抜いて 10 秒待ち、挿し直してから、もう一度リセットを 2 回押します。</p>
+      <p><b>コピーしてもドライブがすぐにまた表示される</b>: 書き込めていません。入れたファイルが <code>gc-abxy.uf2</code> であることを確かめて、もう一度入れます。</p>
+    </div>
+  </section>
+
+  <section id="keymap">
+    <h2><span class="n"></span>キーの割り当てを変える（任意）</h2>
+    <p class="sub">4 つのボタンで入力するキーは、Web サイトの <a href="https://zmk.studio/" target="_blank" rel="noopener noreferrer">ZMK Studio</a> で変えられます。</p>
+    <div class="scrolly">
+      <div class="stage photo"><div class="stage-in"><div class="frame on" data-frame="connect"><div class="render-img studio-connect" role="img" aria-label="ZMK Studio の最初の画面。USB ボタンが 1 つだけある"><svg viewBox="0 0 800 320" aria-hidden="true"><rect x="191" y="170" width="110" height="82" rx="14" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="14 9"/></svg></div></div><div class="frame" data-frame="port"><div class="render-img studio-port" role="img" aria-label="ブラウザの接続の画面。GC-ABXY の行を選び、接続ボタンを押す"><svg viewBox="0 0 800 800" aria-hidden="true"><rect x="36" y="203" width="728" height="64" rx="6" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="12 8"/><circle cx="764" cy="200" r="26" fill="#574c9b" stroke="#fff" stroke-width="4"/><text x="764" y="213" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="36" font-weight="700" fill="#fff">1</text><rect x="616" y="598" width="152" height="66" rx="33" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="12 8"/><circle cx="612" cy="592" r="26" fill="#574c9b" stroke="#fff" stroke-width="4"/><text x="612" y="605" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="36" font-weight="700" fill="#fff">2</text></svg></div></div><div class="frame" data-frame="edit"><div class="render-img studio-edit" role="img" aria-label="ZMK Studio でキーを編集する画面。中央に 4 つのキー、下に Key 欄、右上に保存ボタン"><svg viewBox="0 0 1200 1000" aria-hidden="true"><rect x="448" y="513" width="130" height="126" rx="22" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="12 8"/><circle cx="446" cy="508" r="30" fill="#574c9b" stroke="#fff" stroke-width="4"/><text x="446" y="523" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="42" font-weight="700" fill="#fff">1</text><rect x="275" y="920" width="287" height="50" rx="8" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="12 8"/><circle cx="566" cy="905" r="30" fill="#574c9b" stroke="#fff" stroke-width="4"/><text x="566" y="920" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="42" font-weight="700" fill="#fff">2</text></svg></div></div><div class="frame" data-frame="save"><div class="render-img studio-edit" role="img" aria-label="ZMK Studio の画面。右上の保存ボタン"><svg viewBox="0 0 1200 1000" aria-hidden="true"><circle cx="1117" cy="36" r="32" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="10 7"/><circle cx="1040" cy="100" r="30" fill="#574c9b" stroke="#fff" stroke-width="4"/><text x="1040" y="115" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="42" font-weight="700" fill="#fff">3</text></svg></div></div><span class="stage-n" aria-hidden="true">手順 1</span></div><div class=stage-caps><p class="on" data-frame="connect">最初の画面です。<b>USB</b> を押します。</p><p class="" data-frame="port">「USB」を押すと表示される画面です（Mac の Chrome）。<span class="leg"><i>1</i>GC-ABXY の行</span><span class="leg"><i>2</i>接続</span>ほかの行の名前はパソコンによって違います。</p><p class="" data-frame="edit">B を ←（LeftArrow）に、A を → に変えた画面です。<span class="leg"><i>1</i>変えたいキー</span><span class="leg"><i>2</i>Key 欄</span></p><p class="" data-frame="save"><span class="leg"><i>3</i>保存ボタン</span>画面右上にあります。</p></div></div>
+    <ol class="steps">
+      <li data-frame="connect"><span class="what">USB でパソコンにつなぐ</span></li>
+      <li data-frame="connect"><span class="what">ZMK Studio を開く</span><span class="how">パソコンの <b>Chrome か Edge</b> で <a href="https://zmk.studio/" target="_blank" rel="noopener noreferrer">zmk.studio</a> を開きます。スマホや Safari・Firefox では使えません。</span></li>
+      <li data-frame="port"><span class="what">「USB」を押し、GC-ABXY を選んで「接続」を押す</span><span class="how">ブラウザが開く小さなウィンドウに、つないでいる機器の一覧が表示されます。</span></li>
+      <li data-frame="edit"><span class="what">画面上の変えたいキーを押し、下の Key 欄で新しいキーを選ぶ</span><span class="how"><b>2</b> の欄に <b>enter</b> などと入力すると、候補が絞れます。</span></li>
+      <li data-frame="save"><span class="what">右上の保存ボタンを押す</span><span class="how">押さないと、電源を切ったときに元に戻ります。</span></li>
+    </ol>
+    </div>
+    <div class="note">
+      <p>PROFILE ボタンは ZMK Studio に表示されず、割り当ても変更できません。変えた割り当てを最初に戻すには、画面上の <b>GC-ABXY ▾</b> から <b>Restore Stock Settings</b> を押します。</p>
+    </div>
+  </section>
+
+  <section id="to-use">
+    <a class="go" href="../use/">使い方へ</a>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot-links"><a href="https://github.com/naritaku/gc-abxy">GitHub（ファームウェア）</a> ・ <a href="https://gc-abxy.pages.dev/support">問い合わせ</a> ・ <a href="../specs/">仕様</a> ・ <a href="../making/">開発記</a> ・ 販売者: naritaku</p>
+    <div class="foot-sec">
+      <h3>この製品についての注記</h3>
+      <p><b>任天堂株式会社の公式製品ではありません。</b>同社および関連会社とは一切関係がなく、許諾・後援・提携も受けていません。「ニンテンドーゲームキューブ」「Nintendo」は任天堂株式会社の商標または登録商標です。<a href="../#legal">詳しい注記</a></p>
+    </div>
+    <div class="foot-sec">
+      <h3>改訂履歴</h3>
+      <p><span data-build-date>2026/10/07</span>　プロトタイプ版を公開</p>
+    </div>
+  </footer>
+
+</div>
+<script>window.GC_MEDIA={"sw-flash-2-usb": {"p": "anim/sw-flash-2-usb.webp?v=f921c46716", "m": "anim/sw-flash-2-usb.mp4?v=a87582b4ac", "w": "anim/sw-flash-2-usb.webm?v=c4df4c992a"}, "sw-flash-3-reset": {"p": "anim/sw-flash-3-reset.webp?v=332ecc763e", "m": "anim/sw-flash-3-reset.mp4?v=10e31b2bd6", "w": "anim/sw-flash-3-reset.webm?v=236ab5ff34"}, "sw-flash-7-poweron": {"p": "anim/sw-flash-7-poweron.webp?v=50bc023387", "m": "anim/sw-flash-7-poweron.mp4?v=df03c9c08e", "w": "anim/sw-flash-7-poweron.webm?v=335c85c69f"}};</script>
+<script src="../assets/manual.js?v=a1acc30118"></script>
+</body>
+</html>

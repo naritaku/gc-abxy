@@ -1,0 +1,9 @@
+file_format: "1"
+id: gc_abxy
+name: GC ABXY
+type: shield
+url: https://github.com/naritaku/gc-abxy
+requires: [seeed_xiao]
+features:
+  - keys
+  - studio

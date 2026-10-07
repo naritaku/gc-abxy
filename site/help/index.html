@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ja" data-base="../" data-page="help">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GC ABXY で困ったとき（症状と対処・診断・問い合わせ）</title>
+<meta name="description" content="つながらない、反応しない、スマホで画面のキーボードが出ないなどの症状と対処、ブラウザでの診断、バージョンの確認と問い合わせ先。">
+<link rel="canonical" href="https://gc-abxy.pages.dev/help/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GC ABXY">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="GC ABXY で困ったとき（症状と対処・診断・問い合わせ）">
+<meta property="og:description" content="つながらない、反応しない、スマホで画面のキーボードが出ないなどの症状と対処、ブラウザでの診断、バージョンの確認と問い合わせ先。">
+<meta property="og:url" content="https://gc-abxy.pages.dev/help/">
+<meta property="og:image" content="https://gc-abxy.pages.dev/assets/img/back-on.jpg?v=49c7b770b5">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/icon.svg?v=a9eed07451" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=8b393a4c44">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://gc-abxy.pages.dev/#site", "name": "GC ABXY", "url": "https://gc-abxy.pages.dev/", "inLanguage": "ja"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://gc-abxy.pages.dev/"}, {"@type": "ListItem", "position": 2, "name": "困ったとき", "item": "https://gc-abxy.pages.dev/help/"}]}, {"@type": "TechArticle", "headline": "GC ABXY で困ったとき（症状と対処・診断・問い合わせ）", "description": "つながらない、反応しない、スマホで画面のキーボードが出ないなどの症状と対処、ブラウザでの診断、バージョンの確認と問い合わせ先。", "inLanguage": "ja", "about": {"@id": "https://gc-abxy.pages.dev/#kit"}, "author": {"@type": "Person", "name": "naritaku", "url": "https://github.com/naritaku"}}]}</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head" id="top">
+    <a class="brand" href="../" aria-label="GC ABXY 取扱説明書のトップへ"><svg viewBox="0 0 100 100" width="100" height="100" role="img">
+        <circle cx="27" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="73" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="27" cy="73" r="16.8" fill="#ce4237"/>
+        <circle cx="73" cy="73" r="16.8" fill="#3fa65a"/>
+      </svg><span><span class="eyebrow">取扱説明書</span><b>GC ABXY</b></span></a>
+  </header>
+
+  <nav id="tabbar" class="tabs" aria-label="ページ">
+    <a href="../">ホーム</a>
+    <a href="../prep/">ビルドガイド</a>
+    <a href="../use/">使い方</a>
+    <a href="../help/" aria-current="page">困ったとき</a>
+  </nav>
+
+  <main id="main">
+<h1>困ったとき</h1>
+<p class="lede">うまく動かないときは、症状の表から探してください。購入前・製作前の質問は、ホームの「<a href="../#faq">よくある質問</a>」をご覧ください。</p>
+<nav class="toc" aria-label="このページの内容"><ol><li><a href="#trouble"><span>01</span>症状から探す</a></li><li><a href="#diag"><span>02</span>診断する</a></li><li><a href="#spare"><span>03</span>部品をなくした・壊したとき</a></li><li><a href="#fwver"><span>04</span>バージョンを確かめて問い合わせる</a></li></ol></nav>
+
+  <section id="trouble">
+    <h2><span class="n"></span>症状から探す</h2>
+    <div class="tablewrap">
+      <table class="fix stack">
+        <thead><tr><th scope="col">症状</th><th scope="col">試すこと（上から順に）</th></tr></thead>
+        <tbody>
+          <tr><td>USB でつなぐと XIAO が熱い<br>パソコンが認識しない</td><td><ol>
+            <li><b>すぐ USB を抜き、電池も外す。</b></li>
+            <li>背面ケースを外し、<a href="../solder/#solder-check">はんだ付けの確認</a>の「ショートしていないことの確認」をやり直す。鳴り続けたら、つながっているはんだを吸い取り線で直す。</li>
+            <li>熱くならず、認識だけされないときは、<b>データが通る別のケーブル</b>と別の USB ポートで試す。</li>
+          </ol></td></tr>
+          <tr><td>まったく反応しない<br>LED も光らない</td><td><ol>
+            <li>電源スイッチを <b>ON</b>（基板の ON の印字側）にする。</li>
+            <li>電池の向きを確かめる（<b>＋の印字面が上</b>）。</li>
+            <li>電池を<b>新しい CR2450</b> に替える。</li>
+            <li>USB でパソコンにつなぐ。動けば、電池ホルダーとスライドスイッチのはんだ付けを確かめる。動かなければ、<b>データが通る別のケーブル</b>と別の USB ポートで試す。</li>
+            <li>ゼムクリップなど先の細い物で<b>リセットボタンを 1 回</b>押す（再起動します）。</li>
+            <li>プログラムを<a href="../firmware/#flash">書き込み直す</a>。</li>
+          </ol></td></tr>
+          <tr><td>つまみが重い・動かない</td><td><ol>
+            <li>ねじを少しゆるめる。</li>
+            <li>ケースを開け、つまみがスライドスイッチにかぶさっているか確かめる。</li>
+          </ol></td></tr>
+          <tr><td>一部のボタンが反応しない</td><td><ol>
+            <li>ねじを少しゆるめる（締めすぎるとボタンが沈みきりません）。</li>
+            <li>ケースを開け、ゴムシートがボタン面のケースにぴったりはまっているか確かめる。</li>
+            <li>ゴムシート裏の黒い円を、乾いた柔らかい布で軽く拭く。</li>
+            <li>基板のボタンとの接点部分にフラックスやはんだくずが付いていたら、無水エタノールを含ませた綿棒で拭く。</li>
+            <li><a href="#diag">診断</a>で押した回数を確かめる。</li>
+          </ol></td></tr>
+          <tr><td>PROFILE ボタンが反応しない</td><td><ol>
+            <li>パソコンにつないだ USB ケーブルを抜く。</li>
+            <li>マゼンタ（赤紫）に光っているなら診断中です。<a href="#diag">診断する</a>で「終了」を押すか、電源を入れ直す。そのまま待っても、点滅なら 30 秒、5 秒おきに光るなら 5 分で元に戻ります。</li>
+            <li>押しても手応えがないなら、背面ケースを外し、キャップがスイッチの真ん中に載っているか確かめる。</li>
+          </ol></td></tr>
+          <tr><td>ZMK Studio に GC-ABXY が表示されない</td><td><ol>
+            <li>パソコンの <b>Chrome か Edge</b> で開いているか確かめる（スマホや Safari・Firefox では使えません）。</li>
+            <li><b>データが通るケーブル</b>で USB につなぎ直して、「USB」を押し直す。</li>
+            <li>プログラムを<a href="../firmware/#flash">書き込み直す</a>。</li>
+          </ol></td></tr>
+          <tr><td>ペアリングできない<br>一覧に表示されない</td><td><ol>
+            <li>黄色く点滅するなら、先に電池を<a href="../use/#battery">交換</a>する（白と青が見分けられません）。</li>
+            <li><b>USB を抜いて</b>、PROFILE を短く押して<b>白く点滅する番号</b>にする。3 つとも青なら、<b>使わない番号に切り替えて</b> PROFILE を<a href="../use/#profile-hold">赤く点灯するまで長押し</a>して離し、その番号を空ける（登録が消えます）。</li>
+            <li>機器側に古い <b>GC-ABXY-…</b> の登録が残っていれば削除する。</li>
+            <li>機器の Bluetooth 設定をいったんオフにして、オンに戻す。</li>
+            <li><a href="../use/#reset">出荷状態に戻して</a>、つなぎ直す。</li>
+          </ol></td></tr>
+          <tr><td>スマホにつなぐと<br>画面のキーボードが表示されない</td><td>故障ではありません。<b>iPhone・iPad</b>: 入力欄を選ぶと表示されるバーの、キーボードのボタン（∨）を押す。<b>Android</b>: 設定 → システム → 言語と入力 → 物理キーボード →「画面キーボードの使用」をオン（機種によって項目名が異なる）。</td></tr>
+          <tr><td>Mac で「キーボード設定アシスタント」が開く</td><td>閉じる（このキーパッドでは設定を完了できない）。入力には影響しない。</td></tr>
+          <tr><td>つながったり切れたりする</td><td><ol>
+            <li>黄色く点滅するなら電池を替える。</li>
+            <li>機器に近づける（間に金属や体を挟まない）。</li>
+            <li>機器側の登録を削除して、つなぎ直す。</li>
+          </ol></td></tr>
+          <tr><td>別の機器に入力される</td><td><ol>
+            <li>パソコンに USB でつないでいると、そちらに入ります。ワイヤレスで使うなら USB を抜く。</li>
+            <li>PROFILE を短く押して、つなぎたい機器の番号にする（点滅の回数が番号）。</li>
+          </ol></td></tr>
+          <tr><td>1 回押すと 2 回入る</td><td><ol>
+            <li>ケースを開け、ゴムシート裏の黒い円を、乾いた柔らかい布で軽く拭く。</li>
+            <li><a href="#diag">診断</a>で、そのキーの押した回数と間隔の最短を確かめて、結果を添えて問い合わせる。</li>
+          </ol></td></tr>
+          <tr><td>黄色く点滅する</td><td>電池が残り少ない合図です。新しい CR2450 に<a href="../use/#battery">交換</a>する。</td></tr>
+          <tr><td>上のどれでも直らない</td><td><ol>
+            <li><a href="../use/#reset">出荷状態に戻す</a>（ペアリングと割り当てが消えます）。</li>
+            <li>プログラムを<a href="../firmware/#flash">書き込み直す</a>。</li>
+            <li><a href="#diag">診断して</a>、結果とバージョンを添えて<a href="#contact">問い合わせる</a>。</li>
+          </ol></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="diag">
+    <h2><span class="n"></span>診断する</h2>
+    <p class="sub">本体の状態と、キーがどう押されたかをこのページで調べられます。Windows・Mac・Android の <b>Chrome</b>、または Windows・Mac の <b>Edge</b> で使えます。</p>
+    <div class="note">
+      <p><span class="ln">USB を抜き、PROFILE を短く押して<b>白く点滅する番号</b>にします。</span><span class="ln">つないだあと OS の画面でペアリングを求められたら「キャンセル」します。</span><span class="ln">終わったら USB を抜き、PROFILE を短く押して、いつも使う番号に戻します。</span></p>
+      <p><span class="ln">キーの記録は、本体の操作で開始したときだけ行い、最長 5 分で終わります。</span><span class="ln">結果には、本体の個体 ID・起動回数・電池などの状態と、キーごとの押した回数・間隔の最短・押した長さの最長が含まれます。いつ押したか、何を入力したかは含まれません。</span></p>
+    </div>
+
+    <div class="diag" id="diag-box">
+      <h3>1. つないで状態を確かめる</h3>
+      <ol class="steps">
+        <li><span class="what">下の「つなぐ」を押す</span></li>
+        <li><span class="what">一覧から <b>GC-ABXY-</b> で始まる名前を選び、「ペア設定」または「接続」を押す</span><span class="how">バージョン・電池・起動回数・直前の再起動の理由が下に表示されます。</span></li>
+      </ol>
+      <div class="fwver">
+        <button type="button" id="diag-connect">つなぐ</button>
+        <output id="diag-msg" aria-live="polite"></output>
+      </div>
+      <div class="tablewrap" id="diag-state" hidden>
+        <table>
+          <tbody>
+            <tr><th scope="row">名前</th><td id="diag-name">—</td></tr>
+            <tr><th scope="row">バージョン</th><td id="diag-fw">—</td></tr>
+            <tr><th scope="row">電池</th><td id="diag-batt">—</td></tr>
+            <tr><th scope="row">起動回数</th><td id="diag-boot">—</td></tr>
+            <tr><th scope="row">直前の再起動</th><td id="diag-reset">—</td></tr>
+            <tr><th scope="row">起動からの時間</th><td id="diag-up">—</td></tr>
+            <tr><th scope="row">接続先</th><td id="diag-prof">—</td></tr>
+            <tr><th scope="row">出力</th><td id="diag-out">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warn" id="diag-advice" hidden>
+        <h3 id="diag-advice-h"></h3>
+        <p id="diag-advice-p"></p>
+      </div>
+
+      <h3>2. キーを確かめる</h3>
+      <ol class="steps">
+        <li><span class="what">「キーの確認を始める」を押す</span><span class="how">本体の LED がマゼンタ（赤紫）で点滅します。</span></li>
+        <li><span class="what">本体の <b>PROFILE と A を同時に 3 秒</b>押し続ける</span><span class="how">「キーの確認を始める」を押してから 30 秒以内に押します。3 秒より前に離したら、もう一度押し続けます。この間 PROFILE を押しても、接続先は切り替わりません。</span></li>
+        <li><span class="what"><b>A・B・X・Y・PROFILE を 5 回ずつ</b>押す</span><span class="how">ふつうの速さで、1 回ずつ離して押します。表の回数が 5 になり、判定がすべて「OK」になれば正常です。</span></li>
+      </ol>
+      <div class="fwver">
+        <button type="button" id="diag-start" disabled>キーの確認を始める</button>
+      </div>
+      <div class="note" id="diag-prompt" hidden aria-live="polite"><p></p></div>
+      <div class="tablewrap" id="diag-keys" hidden>
+        <table class="diag-keys">
+          <thead><tr><th scope="col">キー</th><th scope="col">回数</th><th scope="col">間隔の最短</th><th scope="col">押した長さの最長</th><th scope="col">判定</th></tr></thead>
+          <tbody id="diag-keys-body"></tbody>
+        </table>
+      </div>
+      <p class="sub diag-legend" id="diag-legend" hidden>間隔の最短が 30 ms より短い場合は、1 回の押下を 2 回に数えている（接点のばたつき）おそれがあります。押した長さの最長が 2 秒を超えると、キーが戻りにくいおそれがあります。</p>
+
+      <h3>3. 結果をコピーして終える</h3>
+      <div class="fwver">
+        <button type="button" id="diag-copy" disabled>結果をコピー</button>
+        <button type="button" id="diag-end" class="sec" disabled>終了</button>
+      </div>
+      <textarea id="diag-text" readonly rows="8" hidden aria-label="診断の結果"></textarea>
+      <p class="sub">「終了」を押すと記録をやめ、本体から消して、接続を切ります。押し忘れても、5 分経過するか電源を切ると、記録は終わります。</p>
+    </div>
+
+  </section>
+
+  <section id="spare">
+    <h2><span class="n"></span>部品をなくした・壊したとき</h2>
+    <p class="sub">なくしたり壊したりしたときは、次の条件に合うものを購入して使ってください。</p>
+    <div class="tablewrap">
+      <table class="fix stack">
+        <thead><tr><th scope="col">部品</th><th scope="col">代わりに使えるもの</th></tr></thead>
+        <tbody>
+          <tr><td>電池ホルダー<br>CH274-2450LF</td><td><span class="ln">同じ外形の表面実装ホルダーを使います（例: マルツオンラインの GB-BHH-2450RS-MS）。</span><span class="ln">外形は 36.1×16 mm、高さは 7.5 mm、端子の間隔は 33.3 mm です。</span></td></tr>
+          <tr><td>スライドスイッチ<br>SSSS213202</td><td><span class="ln">足の配置が同じものを使います。</span><span class="ln">つまみは 1.5 mm 角、基板からつまみの先までは 5.8 mm、動く幅は 2 mm です。</span></td></tr>
+          <tr><td>タクトスイッチ<br>TS-06104</td><td><span class="ln">6×6 mm、高さ 4.3 mm の表面実装品を使います（例: マルツオンラインの TVDM04-4.3-180GF）。</span></td></tr>
+          <tr><td>背面ケース・電池ぶた・つまみ・キャップ</td><td><a href="#contact">問い合わせ</a>てください</td></tr>
+          <tr><td>M2×8 ねじ</td><td>長さ 8 mm の M2 なべ小ねじを使います。</td></tr>
+          <tr><td>ゴムシート・ボタン</td><td>同じカプセルトイのものと入れ替えます。</td></tr>
+          <tr><td>XIAO nRF52840</td><td>無印の 102010448 を使います（Sense や Plus は動作未確認です）。</td></tr>
+          <tr><td>電池</td><td>CR2450 を使います。充電池（LIR2450）は使えません。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="fwver">
+    <h2><span class="n"></span>バージョンを確かめて問い合わせる</h2>
+    <p class="sub">問い合わせの前に、プログラムのバージョン（例: <code>v0.1.0</code>）を確かめてください。Windows・Mac と Android では、<a href="#diag">診断する</a>でつなぐと表示されます。iPhone などでは、下のアプリで読みます。</p>
+    <div class="note">
+      <p>診断と同じく、USB を抜いて白く点滅する番号にしてから読みます。3 つとも青のときは、いまの番号の機器の Bluetooth を一時的にオフにします。</p>
+    </div>
+
+    <h3>スマホのアプリ nRF Connect で読む</h3>
+    <p class="sub">Nordic Semiconductor の無料アプリ <b>nRF Connect for Mobile</b> を App Store か Google Play から入れます。</p>
+    <ol class="steps">
+      <li><span class="what">アプリを開き、「SCANNER」（スキャン）の一覧から <b>GC-ABXY-</b> で始まる名前を探して「CONNECT」を押す</span><span class="how">見つからないときは、下に引いて一覧を更新します。</span></li>
+      <li><span class="what">「Device Information」を開き、「Firmware Revision String」の値を確かめる</span><span class="how">値が表示されていなければ、行の読み込みボタン（下向き矢印や「R」）を押します。これがバージョンです。</span></li>
+      <li><span class="what">「DISCONNECT」を押して切る</span></li>
+    </ol>
+
+    <h3 id="contact">問い合わせる</h3>
+    <p>問い合わせは <a href="https://gc-abxy.pages.dev/support">gc-abxy.pages.dev/support</a> で受け付けています。GitHub の Issues（問い合わせの掲示板）に移ります。書き込むには GitHub のアカウントが要り、<b>書いた内容は誰でも見られます</b>。住所や本名は書かないでください。</p>
+    <p>次のものを添えてください。</p>
+    <ul class="plain">
+      <li><b>バージョン</b>（上で確かめたもの）</li>
+      <li><b>基板の版</b>（基板の、部品を付けた面の印字。例: <code>gc-abxy REV A</code>）</li>
+      <li><b>基板の両面の写真</b></li>
+      <li><b>つなぎたい機器と OS</b></li>
+      <li><b>LED の光り方</b></li>
+      <li><b>診断の結果</b>（<a href="#diag">診断する</a>でコピーしたもの）</li>
+      <li><b>試したこと</b></li>
+    </ul>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot-links"><a href="https://github.com/naritaku/gc-abxy">GitHub（ファームウェア）</a> ・ <a href="https://gc-abxy.pages.dev/support">問い合わせ</a> ・ <a href="../specs/">仕様</a> ・ <a href="../making/">開発記</a> ・ 販売者: naritaku</p>
+    <div class="foot-sec">
+      <h3>この製品についての注記</h3>
+      <p><b>任天堂株式会社の公式製品ではありません。</b>同社および関連会社とは一切関係がなく、許諾・後援・提携も受けていません。「ニンテンドーゲームキューブ」「Nintendo」は任天堂株式会社の商標または登録商標です。Bluetooth® のワードマークおよびロゴは Bluetooth SIG, Inc. の登録商標です。本キットは Bluetooth SIG の認証を受けた製品ではなく、無線の機能は別途ご用意いただく XIAO nRF52840（Seeed Studio 製）のものです。<a href="../#legal">詳しい注記</a></p>
+    </div>
+    <div class="foot-sec">
+      <h3>改訂履歴</h3>
+      <p><span data-build-date>2026/10/07</span>　プロトタイプ版を公開</p>
+    </div>
+  </footer>
+
+</div>
+<script src="../assets/manual.js?v=a1acc30118"></script>
+</body>
+</html>

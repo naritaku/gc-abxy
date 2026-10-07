@@ -1,0 +1,76 @@
+# gc-abxy firmware module: PROFILE management state machine, status LED, CR2450 battery gauge, device name.
+
+DT_COMPAT_GC_PROFILE_BUTTON := gc,profile-button
+DT_COMPAT_GC_BATTERY_CR2450 := gc,battery-cr2450
+
+config GC_ABXY_MGMT
+    bool "gc-abxy PROFILE button: profile switch, bond clear, factory reset"
+    default $(dt_compat_enabled,$(DT_COMPAT_GC_PROFILE_BUTTON))
+    depends on ZMK_BLE && GPIO
+    help
+      Reads the rear PROFILE button (gc,profile-button) directly, outside the keymap, so ZMK Studio cannot remap it.
+      While it is held, A/B/X/Y are swallowed. Short press: next BLE profile. PROFILE alone: 5 s warning, 8 s arms a
+      bond clear of the current profile. PROFILE with X+Y: 10 s arms a factory reset; releasing anything earlier
+      cancels. All of it is inhibited while USB HID is the active endpoint.
+
+config GC_ABXY_MGMT_DEBOUNCE_MS
+    int "PROFILE button debounce (ms)"
+    default 20
+    depends on GC_ABXY_MGMT
+
+config GC_ABXY_MGMT_POS_X
+    int "Key position of X"
+    default 2
+    depends on GC_ABXY_MGMT
+
+config GC_ABXY_MGMT_POS_Y
+    int "Key position of Y"
+    default 3
+    depends on GC_ABXY_MGMT
+
+config GC_ABXY_LED
+    bool "gc-abxy status LED patterns on the XIAO RGB LED"
+    default y
+    depends on GPIO
+    help
+      Normally off. Boot and profile switch: blinks = selected profile number, blue if that profile is paired,
+      white if it is free for pairing, yellow if the battery is low. BLE connected: rainbow 1 s.
+      Management warning: red blink. Bond clear armed: red solid. Factory reset armed: rainbow.
+
+config GC_ABXY_BATTERY_LOW_PCT
+    int "Battery low threshold (percent, interim until SR-BAT-05 is measured)"
+    default 28
+    help
+      28 % is 2.615 V on the interim CR2450 table in battery_cr2450.c. The derivation asks for 2.60 V = 25 %,
+      but the reported level is quantised to 4 % steps, and 25 is not a step: the warning would land on
+      24 % = 2.593 V. 28 is the next step up and keeps the fire point above the requirement. Derived in
+      measurement/battery-threshold-interim.md: the floor is 2.50 V (QSPI flash P25Q16H needs 2.3 V, plus
+      200 mV for the cell's end-of-life internal resistance) and the BAT_ADC worst-case error is +-4.1 %
+      (1 % divider resistors + 3 % SAADC gain), so warning has to start at 2.50 x 1.041 = 2.60 V for the
+      warning to be guaranteed while the cell is still above 2.50 V. Replace together with the table once
+      SR-BAT-05 has measured the real curve.
+
+config GC_ABXY_BATTERY_CR2450
+    bool
+    default $(dt_compat_enabled,$(DT_COMPAT_GC_BATTERY_CR2450))
+    select ADC
+    select ZMK_BATTERY
+    depends on SENSOR
+    help
+      Voltage-divider battery gauge with a CR2450 discharge table instead of ZMK's Li-ion curve.
+
+config GC_ABXY_DIAG
+    bool "Diagnostics over BLE: status, battery, and key records during an owner-started session"
+    default y
+    depends on ZMK_BLE && SETTINGS && GC_ABXY_MGMT && GC_ABXY_LED && GC_ABXY_BATTERY_CR2450
+    select HWINFO
+    help
+      Vendor service d8bd0001-0b7f-4dc6-bc76-8c605103e9f1 for troubleshooting and the pre-shipment check.
+      Status and Battery are always readable (no keystroke information). Key events and counters are only
+      recorded in a diagnostics session: a host writes START, then PROFILE + A are held together for 3 s on
+      the device; the session ends after 5 minutes, on STOP or on reset, and its records are cleared.
+
+config GC_ABXY_DEVICE_NAME
+    bool "Set BLE device name GC-ABXY-XXXX from the nRF device ID"
+    default y
+    depends on ZMK_BLE && BT_DEVICE_NAME_DYNAMIC

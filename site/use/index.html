@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ja" data-base="../" data-page="use">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GC ABXY の使い方（USB・ワイヤレス 3 台・LED の意味・電池交換）</title>
+<meta name="description" content="GC ABXY を USB とワイヤレスでつなぐ方法、3 台の切り替え、PROFILE ボタンの長押し、出荷状態に戻す方法、LED の色の意味、CR2450 の交換手順。">
+<link rel="canonical" href="https://gc-abxy.pages.dev/use/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GC ABXY">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="GC ABXY の使い方（USB・ワイヤレス 3 台・LED の意味・電池交換）">
+<meta property="og:description" content="GC ABXY を USB とワイヤレスでつなぐ方法、3 台の切り替え、PROFILE ボタンの長押し、出荷状態に戻す方法、LED の色の意味、CR2450 の交換手順。">
+<meta property="og:url" content="https://gc-abxy.pages.dev/use/">
+<meta property="og:image" content="https://gc-abxy.pages.dev/assets/img/back-on.jpg?v=49c7b770b5">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/icon.svg?v=a9eed07451" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=8b393a4c44">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://gc-abxy.pages.dev/#site", "name": "GC ABXY", "url": "https://gc-abxy.pages.dev/", "inLanguage": "ja"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://gc-abxy.pages.dev/"}, {"@type": "ListItem", "position": 2, "name": "使い方", "item": "https://gc-abxy.pages.dev/use/"}]}, {"@type": "TechArticle", "headline": "GC ABXY の使い方（USB・ワイヤレス 3 台・LED の意味・電池交換）", "description": "GC ABXY を USB とワイヤレスでつなぐ方法、3 台の切り替え、PROFILE ボタンの長押し、出荷状態に戻す方法、LED の色の意味、CR2450 の交換手順。", "inLanguage": "ja", "about": {"@id": "https://gc-abxy.pages.dev/#kit"}, "author": {"@type": "Person", "name": "naritaku", "url": "https://github.com/naritaku"}}]}</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head" id="top">
+    <a class="brand" href="../" aria-label="GC ABXY 取扱説明書のトップへ"><svg viewBox="0 0 100 100" width="100" height="100" role="img">
+        <circle cx="27" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="73" cy="27" r="16.8" fill="#9a9ca8"/>
+        <circle cx="27" cy="73" r="16.8" fill="#ce4237"/>
+        <circle cx="73" cy="73" r="16.8" fill="#3fa65a"/>
+      </svg><span><span class="eyebrow">取扱説明書</span><b>GC ABXY</b></span></a>
+  </header>
+
+  <nav id="tabbar" class="tabs" aria-label="ページ">
+    <a href="../">ホーム</a>
+    <a href="../prep/">ビルドガイド</a>
+    <a href="../use/" aria-current="page">使い方</a>
+    <a href="../help/">困ったとき</a>
+  </nav>
+
+  <main id="main">
+<h1>使い方</h1>
+<p class="lede">通常使うのは<b>電源スイッチ</b>と<b>4 つのボタン</b>だけです。<b>PROFILE ボタン</b>は、接続先を切り替えるときと、設定を消すときに使います。</p>
+<nav class="toc" aria-label="このページの内容"><ol><li><a href="#use-s1"><span>01</span>ボタンを押す</a></li><li><a href="#use-s2"><span>02</span>USB でつなぐ</a></li><li><a href="#use-s3"><span>03</span>ワイヤレスでつなぐ</a></li><li><a href="#profile-hold"><span>04</span>PROFILE ボタンの長押し</a></li><li><a href="#reset"><span>05</span>出荷状態に戻す</a></li><li><a href="#led"><span>06</span>LED の意味</a></li><li><a href="#battery"><span>07</span>電池を交換する</a></li></ol></nav>
+  <figure class="render"><div class="render-img back-on" role="img" aria-label="背面ケース側から見た完成品。上に USB 端子、左に六角形の PROFILE ボタンと電源スイッチ、右下に電池ぶた"><svg viewBox="0 0 1400 1400" aria-hidden="true"><circle cx="328" cy="557" r="70" fill="none" stroke="#fff" stroke-width="7" stroke-dasharray="18 12"/><circle cx="278" cy="507" r="38" fill="#574c9b" stroke="#fff" stroke-width="6"/><text x="278" y="526" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="54" font-weight="700" fill="#fff">1</text><rect x="182" y="688" width="146" height="222" rx="26" fill="none" stroke="#fff" stroke-width="7" stroke-dasharray="18 12"/><circle cx="182" cy="688" r="38" fill="#574c9b" stroke="#fff" stroke-width="6"/><text x="182" y="707" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="54" font-weight="700" fill="#fff">2</text></svg></div><figcaption>背面ケース側から見た図です。<span class="leg"><i>1</i>PROFILE ボタン</span><span class="leg"><i>2</i>電源スイッチ（基板に ON / OFF の印字）</span></figcaption></figure>
+
+  <section id="use-s1">
+    <h2><span class="n"></span>ボタンを押す</h2>
+    <p class="sub">書き込み直後の状態では、ボタンに対応した文字の a・b・x・y が入力されます。</p>
+    <div class="note">
+      <p>電源が入っていても、LED は通常消えています。</p>
+    </div>
+  </section>
+
+  <section id="use-s2">
+    <h2><span class="n"></span>USB でつなぐ</h2>
+    <figure class="clips"><div class="clip"><video data-src="../anim/use-usb.mp4?v=869ff2ff66" poster="../anim/use-usb.webp?v=f1c7324f11" muted loop playsinline preload="none" aria-label="USB-C を差して、ボタンを押して入力する"></video></div></figure>
+    <ol class="steps">
+      <li><span class="what">USB-C でつなぐ</span><span class="how">つないでいる間は主に USB から給電されるため、<b>電池はほとんど減りません。</b></span></li>
+      <li><span class="what">ボタンを押して入力する</span><span class="how">ペアリングは不要です。</span></li>
+    </ol>
+    <div class="note">
+      <h3>パソコンに USB でつないでいる間は、USB が優先されます</h3>
+      <p>ワイヤレスでの入力と PROFILE ボタンは使えません。ワイヤレスで使うときは USB を抜きます。充電器やモバイルバッテリーから電源だけをとるときは、この制限はありません。</p>
+    </div>
+  </section>
+
+  <section id="use-s3">
+    <h2><span class="n"></span>ワイヤレスでつなぐ</h2>
+    <p class="sub">スマホやパソコンの Bluetooth 設定からペアリングします。LED の色の意味は「<a href="#led">LED の意味</a>」をご覧ください。</p>
+    <figure class="clips"><div class="clip"><video data-src="../anim/use-bt-1-poweron.mp4?v=656649dada" poster="../anim/use-bt-1-poweron.webp?v=dc13619140" muted loop playsinline preload="none" aria-label="電源を ON にすると、番号の回数だけ点滅"></video><p>電源を ON にすると、番号の回数だけ点滅します</p></div><div class="clip"><video data-src="../anim/use-bt-3-connected.mp4?v=1b30c54d0c" poster="../anim/use-bt-3-connected.webp?v=dc13619140" muted loop playsinline preload="none" aria-label="つながると 6 色が 2 周流れる"></video><p>つながると 6 色が 2 周流れます</p></div></figure>
+    <ol class="steps">
+      <li><span class="what">USB を抜く</span></li>
+      <li><span class="what">電源スイッチを ON にする</span><span class="how">つまみを、基板の <b>ON</b> の印字側へ動かします。LED が、いま選ばれている接続先の番号の回数だけ点滅します。</span></li>
+      <li><span class="what">空いている接続先を選ぶ</span><span class="how">LED が<b>白く</b>点滅すれば、その番号は空いています。青く点滅したときは別の機器が登録済みなので、PROFILE ボタンを短く押して、白く点滅する番号に切り替えます。黄色く点滅したときは電池が少なく色を見分けられないため、先に電池を交換します。</span></li>
+      <li><span class="what">つなぎたい機器の Bluetooth 設定を開く</span><span class="how">一覧に <b>GC-ABXY-</b> で始まる名前（例: <code>GC-ABXY-3F7A</code>）が表示されます。末尾の 4 文字は本体ごとに異なります。この名前を選んでペアリングします。</span></li>
+      <li><span class="what">ペアリングできたことを確かめる</span><span class="how">LED に 6 色が流れれば完了です。</span></li>
+    </ol>
+    <h3 id="profiles">接続先を切り替える</h3>
+    <p class="sub">PROFILE ボタンを<b>短く押す</b>と、接続先が 1 → 2 → 3 → 1 と変わり、<b>新しい番号の回数だけ</b> LED が点滅します。</p>
+    <figure class="clips"><div class="clip"><video data-src="../anim/use-profile-switch.mp4?v=723be5fed9" poster="../anim/use-profile-switch.webp?v=e52707ab3c" muted loop playsinline preload="none" aria-label="PROFILE を短く押して離すと、新しい番号の回数だけ点滅"></video></div></figure>
+  </section>
+
+  <section id="profile-hold">
+    <h2><span class="n"></span>PROFILE ボタンの長押し</h2>
+    <p class="sub">押し続けた<b>時間</b>でできることが変わります。LED を見ながら、目的の段階で離します。<b>PROFILE を押している間は、A・B・X・Y を押しても入力されません。</b></p>
+    <figure class="clips"><div class="clip"><video data-src="../anim/use-hold-5s.mp4?v=e825a776fa" poster="../anim/use-hold-5s.webp?v=3edd9852cc" muted loop playsinline preload="none" aria-label="5 秒で赤の点滅"></video><p>5 秒で赤く点滅します</p></div><div class="clip"><img src="../anim/use-hold-8s.webp?v=3edd9852cc" width="1280" height="720" loading="lazy" alt="8 秒で赤の点灯"><p>8 秒で赤く点灯します</p></div></figure>
+
+    <div class="rail">
+      <div class="stop">
+        <div class="t">0 秒</div>
+        <div class="body-col"><div class="card">
+          <h3>5 秒より前に離すと、接続先が次の番号に切り替わります</h3>
+          <p>離したときに、新しい番号の回数だけ点滅します。</p>
+        </div></div>
+      </div>
+      <div class="stop">
+        <div class="t">5 秒</div>
+        <div class="body-col"><div class="card">
+          <h3>5 秒を過ぎ、8 秒より前に離すと、操作は取り消されます</h3>
+          <span class="led-chip"><span class="swatch blinker" style="background:var(--led-red)"></span>赤が点滅</span>
+          
+        </div></div>
+      </div>
+      <div class="stop danger">
+        <div class="t">8 秒</div>
+        <div class="body-col"><div class="card">
+          <h3>8 秒を過ぎてから離すと、いま選んでいる番号のペアリングを消します</h3>
+          <span class="led-chip"><span class="swatch" style="background:var(--led-red)"></span>赤が点灯</span>
+          <p><b>8 秒を過ぎたら取り消せません。</b>消した番号は白く点滅し、新しい機器とペアリングできるようになります。相手側の機器にも接続情報が残っているので、そちらからも <b>GC-ABXY-…</b> の登録を削除してください。</p>
+        </div></div>
+      </div>
+      <div class="stop">
+        <div class="t">10 秒<small>X と Y も押す</small></div>
+        <div class="body-col"><div class="card">
+          <h3>X と Y も押していると、出荷状態に戻す操作になります</h3>
+          <span class="led-chip"><span class="swatch rainbow"></span>6 色が流れる</span>
+          <p>手順は「<a href="#reset">出荷状態に戻す</a>」をご覧ください。</p>
+        </div></div>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="reset">
+    <h2><span class="n"></span>出荷状態に戻す</h2>
+    <p class="sub">本体に保存されている接続先の情報と、キーの割り当てが消えます。</p>
+    <figure class="clips"><div class="clip"><video data-src="../anim/use-reset.mp4?v=798c4f33f4" poster="../anim/use-reset.webp?v=4afc12a129" muted loop playsinline preload="none" aria-label="X・Y を押したまま PROFILE を離すと、再起動して白が 1 回点滅"></video></div></figure>
+    <ol class="steps">
+      <li><span class="what">USB を抜く</span></li>
+      <li><span class="what">電源スイッチを ON にする</span></li>
+      <li><span class="what">PROFILE ボタンと X・Y を押し続ける</span><span class="how">PROFILE を先に押すと、x・y の文字が入力されません。5 秒で赤の点滅に変わります。X・Y を押している間は、8 秒を過ぎても赤の点灯にはならず、点滅が続きます。</span></li>
+      <li><span class="what">6 色が流れ出したら（10 秒）、X と Y は押したまま PROFILE だけ離す</span><span class="how"><b>再起動して、白が 1 回点滅すれば完了</b>です（電池が残り少ないときは黄色）。</span></li>
+    </ol>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">消えるもの</th><th scope="col">消えないもの</th></tr></thead>
+        <tbody>
+          <tr><td>3 台ぶんのペアリング<br>選んでいた接続先の番号（1 番に戻ります）<br>ZMK Studio で変えたキーの割り当て</td><td>本体のプログラム（ファームウェア）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <p>つないでいた機器の側にも <b>GC-ABXY-… の登録が残ります。</b>機器の設定画面から削除してから、つなぎ直してください。</p>
+    </div>
+  </section>
+
+  <section id="led">
+    <h2><span class="n"></span>LED の意味</h2>
+    <figure class="clips"><div class="clip"><video data-src="../anim/use-led-low.mp4?v=75e85c985e" poster="../anim/use-led-low.webp?v=dc13619140" muted loop playsinline preload="none" aria-label="電池が少ないと、黄が数回点滅"></video></div></figure>
+    <div class="tablewrap">
+      <table class="stack">
+        <thead><tr><th scope="col">光り方</th><th scope="col">意味</th></tr></thead>
+        <tbody>
+          <tr><td class="sig"><span><span class="swatch" style="background:var(--led-blue)"></span>青が数回点滅</span></td>
+              <td>電源を入れたときと、接続先を切り替えたときに点滅します。<b>回数が接続先の番号</b>（1〜3）で、その番号は登録済みです。</td></tr>
+          <tr><td class="sig"><span><span class="swatch" style="background:#fff;box-shadow:inset 0 0 0 1px var(--line-strong)"></span>白が数回点滅</span></td>
+              <td>青と同じ合図で、その番号は<b>空いています</b>（ペアリングできます）。</td></tr>
+          <tr><td class="sig"><span><span class="swatch" style="background:var(--led-yellow)"></span>黄が数回点滅</span></td>
+              <td>同じ合図ですが、<b>電池が残り少ない</b>ことを表します。使用中も 1 時間おきに知らせます。</td></tr>
+          <tr><td class="sig"><span><span class="swatch rainbow"></span>6 色が 2 周（約 1 秒）</span></td>
+              <td>ワイヤレスでつながりました。</td></tr>
+          <tr><td class="sig"><span><span class="swatch" style="background:var(--led-red)"></span>赤の点滅・点灯、6 色が流れ続ける</span></td>
+              <td><a href="#profile-hold">PROFILE ボタンの長押し</a>の途中です。</td></tr>
+          <tr><td class="sig"><span><span class="swatch blinker" style="background:#b34fd0"></span>マゼンタが点滅</span></td>
+              <td>診断の開始を待っています（<a href="../help/#diag">診断する</a>）。PROFILE と A を 3 秒押し続けると診断が始まります。30 秒経過すると元に戻ります。</td></tr>
+          <tr><td class="sig"><span><span class="swatch" style="background:#b34fd0"></span>マゼンタが 5 秒おきに光る</span></td>
+              <td>診断中です（キーを記録しています）。5 分経過するか、診断のページで終了すると元に戻ります。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="battery">
+    <h2><span class="n"></span>電池を交換する</h2>
+    <p class="sub">使えるのは <b>CR2450</b> だけです。充電池（LIR2450）は使えません。</p>
+    <p class="sub">用意するもの: <b>硬貨</b>と、<b>プラスチック製のピンセット</b>（金属製は電池をショートさせるおそれがあります）。</p>
+        <figure class="clips"><div class="clip"><video data-src="../anim/use-battery.mp4?v=4ae0f77b02" poster="../anim/use-battery.webp?v=121d60149e" muted loop playsinline preload="none" aria-label="つまみを OFF → 電池ぶたを反時計回りで外す → ＋面を上にして入れて時計回りで閉める"></video></div></figure>
+    <div class="door">
+<svg viewBox="0 0 148 148" width="126" height="126" role="img" aria-label="電池ぶたの開閉方向">
+        <circle cx="74" cy="74" r="58" fill="none" stroke="var(--line-strong)" stroke-width="2"/>
+        <circle cx="74" cy="74" r="43" fill="var(--surface-2)" stroke="var(--line-strong)" stroke-width="2"/>
+        <rect x="70" y="14" width="8" height="12" rx="2" fill="var(--line-strong)"/>
+        <path d="M 96 33 A 50 50 0 0 1 119 66" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 119 66 l -7 -6 l 9 -3 z" fill="var(--accent)"/>
+        <path d="M 52 33 A 50 50 0 0 0 29 66" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 29 66 l 7 -6 l -9 -3 z" fill="var(--ink-3)"/>
+        <text x="122" y="84" text-anchor="middle" fill="var(--accent)" font-family="Roboto Mono, monospace" font-size="11">CLOSE</text>
+        <text x="26" y="84" text-anchor="middle" fill="var(--ink-3)" font-family="Roboto Mono, monospace" font-size="11">OPEN</text>
+      </svg>
+      <p class="cap">背面ケース側から見た向きです。同じ矢印と OPEN／CLOSE は基板に印刷してあり、透明な背面ケース越しに見えます。</p>
+    </div>
+    <ol class="steps">
+      <li><span class="what">電源スイッチを OFF にする</span><span class="how">設定の保存中に電池を外すと、設定が壊れるおそれがあります。</span></li>
+      <li><span class="what">電池ぶたを反時計回りに回して外す</span><span class="how">硬貨などで回します。</span></li>
+      <li><span class="what">古い電池をピンセットで取り出す</span><span class="how">電池のふちを片側だけ挟み、持ち上げます。</span></li>
+      <li><span class="what">＋（印字のある広い面）を上にして入れる</span></li>
+      <li><span class="what">電池ぶたを戻し、時計回りに止まるまで回す</span><span class="how">硬貨などで回します。</span></li>
+    </ol>
+    <div class="note">
+      <p>残量は接続した機器の画面にも表示されますが、電圧から推定した値のため、±20 % ほどずれることがあります。黄色く点滅したら交換してください。</p>
+    </div>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot-links"><a href="https://github.com/naritaku/gc-abxy">GitHub（ファームウェア）</a> ・ <a href="https://gc-abxy.pages.dev/support">問い合わせ</a> ・ <a href="../specs/">仕様</a> ・ <a href="../making/">開発記</a> ・ 販売者: naritaku</p>
+    <div class="foot-sec">
+      <h3>この製品についての注記</h3>
+      <p><b>任天堂株式会社の公式製品ではありません。</b>同社および関連会社とは一切関係がなく、許諾・後援・提携も受けていません。「ニンテンドーゲームキューブ」「Nintendo」は任天堂株式会社の商標または登録商標です。Bluetooth® のワードマークおよびロゴは Bluetooth SIG, Inc. の登録商標です。本キットは Bluetooth SIG の認証を受けた製品ではなく、無線の機能は別途ご用意いただく XIAO nRF52840（Seeed Studio 製）のものです。<a href="../#legal">詳しい注記</a></p>
+    </div>
+    <div class="foot-sec">
+      <h3>改訂履歴</h3>
+      <p><span data-build-date>2026/10/07</span>　プロトタイプ版を公開</p>
+    </div>
+  </footer>
+
+</div>
+<script>window.GC_MEDIA={"use-battery": {"p": "anim/use-battery.webp?v=121d60149e", "m": "anim/use-battery.mp4?v=4ae0f77b02", "w": "anim/use-battery.webm?v=6e2f1a7d6b"}, "use-bt-1-poweron": {"p": "anim/use-bt-1-poweron.webp?v=dc13619140", "m": "anim/use-bt-1-poweron.mp4?v=656649dada", "w": "anim/use-bt-1-poweron.webm?v=2610db59af"}, "use-bt-3-connected": {"p": "anim/use-bt-3-connected.webp?v=dc13619140", "m": "anim/use-bt-3-connected.mp4?v=1b30c54d0c", "w": "anim/use-bt-3-connected.webm?v=26067060e0"}, "use-hold-5s": {"p": "anim/use-hold-5s.webp?v=3edd9852cc", "m": "anim/use-hold-5s.mp4?v=e825a776fa", "w": "anim/use-hold-5s.webm?v=357946e533"}, "use-led-low": {"p": "anim/use-led-low.webp?v=dc13619140", "m": "anim/use-led-low.mp4?v=75e85c985e", "w": "anim/use-led-low.webm?v=07ad2c02fa"}, "use-profile-switch": {"p": "anim/use-profile-switch.webp?v=e52707ab3c", "m": "anim/use-profile-switch.mp4?v=723be5fed9", "w": "anim/use-profile-switch.webm?v=235b57784b"}, "use-reset": {"p": "anim/use-reset.webp?v=4afc12a129", "m": "anim/use-reset.mp4?v=798c4f33f4", "w": "anim/use-reset.webm?v=c9eb2edc76"}, "use-usb": {"p": "anim/use-usb.webp?v=f1c7324f11", "m": "anim/use-usb.mp4?v=869ff2ff66", "w": "anim/use-usb.webm?v=7edbf57947"}};</script>
+<script src="../assets/manual.js?v=a1acc30118"></script>
+</body>
+</html>

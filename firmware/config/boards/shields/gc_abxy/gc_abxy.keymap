@@ -1,0 +1,21 @@
+/*
+ * gc-abxy default keymap. Positions: 0 = A, 1 = B, 2 = X, 3 = Y (requirement SR-KEY-03).
+ * The rear PROFILE button is not a key position: the module reads it directly (gc,profile-button) and runs the
+ * profile / bond clear / factory reset state machine, so it is not shown or remappable in ZMK Studio (SR-CTL-12).
+ * While PROFILE is held the module swallows A/B/X/Y itself, so no management layer is needed either.
+ */
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "ABXY";
+            bindings = <
+                &kp A   &kp B   &kp X   &kp Y
+            >;
+        };
+    };
+};
