@@ -9,7 +9,7 @@
 - 最新のファームウェア（`gc-abxy.uf2`）: https://gc-abxy.pages.dev/fw
 - 問い合わせ: https://gc-abxy.pages.dev/support（このリポジトリの Issues）
 
-書き込み方は、取扱説明書の「02 SW編 → プログラムを書き込む」を見てください。
+書き込み方は、取扱説明書の「[プログラムの書き込み](https://gc-abxy.pages.dev/firmware/#flash)」を見てください。
 
 このリポジトリは、非公開の開発リポジトリから自動で書き出しています。Pull Request は受け付けていません。不具合や質問は Issues へどうぞ。
 
@@ -22,13 +22,15 @@
 | `site/` | 取扱説明書（Cloudflare Pages で公開）と `/fw`・`/support` の転送設定 |
 | `.github/workflows/firmware.yml` | ファームウェアのビルド。`v*` タグで Release に `gc-abxy.uf2` を添付 |
 | `.github/workflows/site.yml` | `site/` を Cloudflare Pages へデプロイ |
+| `functions/` | Cloudflare Pages Functions（`Accept: text/markdown` で取扱説明書の Markdown 版を返す） |
+| `release-notes/` | Release の本文（版ごとに `vX.Y.Z.md`） |
 
 ## ファームウェア
 
 - ZMK **v0.3.0**（Zephyr 3.5）に固定。board `seeeduino_xiao_ble`、shield `gc_abxy`
 - ZMK Studio（USB）対応。ロックなしで接続できます
 - ワイヤレスの接続先は 3 つ
-- ファームウェアのバージョン（公開版はタグ `vX.Y.Z`）と診断機能は、取扱説明書の「04 困ったとき」から読めます
+- ファームウェアのバージョン（公開版はタグ `vX.Y.Z`）と診断機能は、取扱説明書の「[困ったとき](https://gc-abxy.pages.dev/help/)」から読めます
 
 手元でビルドする場合:
 

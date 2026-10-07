@@ -132,11 +132,19 @@ jobs:
           path: firmware
       - name: gc-abxy.uf2 ができているか確かめる
         run: ls -l firmware && test -f firmware/gc-abxy.uf2
+      # the body for buyers is release-notes/<tag>.md (written before tagging); GitHub's own notes follow it
+      - name: Release の本文を選ぶ
+        id: notes
+        run: |
+          f="release-notes/${GITHUB_REF_NAME}.md"
+          if [ -f "$f" ]; then echo "body_path=$f" >> "$GITHUB_OUTPUT"
+          else echo "::warning::$f がないので、Release の本文は自動生成だけになります"; fi
       - uses: softprops/action-gh-release@v2
         with:
           files: |
             firmware/gc-abxy.uf2
             THIRD-PARTY-NOTICES.md
+          body_path: ${{ steps.notes.outputs.body_path }}
           generate_release_notes: true
       # A release made with GITHUB_TOKEN does not start other workflows, but workflow_dispatch does: redeploy the
       # site so /fw stops pointing at the coming-soon page.
