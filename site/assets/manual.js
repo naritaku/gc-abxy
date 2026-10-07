@@ -17,9 +17,10 @@
   (function(){
     var nav=(performance.getEntriesByType&&performance.getEntriesByType('navigation')[0])||{};
     if(location.hash||nav.type==='back_forward'||nav.type==='reload')return;
-    /* scrollIntoView also moves the scrolling boxes around the page (the frame the draft is shown in) */
-    function top(){ var t=document.getElementById('top')||document.body; window.scrollTo(0,0); if(t.scrollIntoView)t.scrollIntoView({block:'start'}); }
-    top(); window.addEventListener('load',top);
+    /* Only a page shown inside a frame needs it: a browser opens a page at its top by itself. scrollIntoView also
+       moves the scrolling boxes around the page. It runs after load, so it does not force a layout while loading. */
+    if(window.self===window.top)return;
+    window.addEventListener('load',function(){ var t=document.getElementById('top')||document.body; window.scrollTo(0,0); if(t.scrollIntoView)t.scrollIntoView({block:'start'}); });
   })();
 
   [].forEach.call(document.querySelectorAll('.check label a'),function(a){
@@ -32,7 +33,7 @@
     var sbar=document.querySelector('main > .stepbar');
     function stick(){ if(!bar)return; var r=document.documentElement.style, h=bar.offsetHeight;
       r.setProperty('--tabh',h+'px'); r.setProperty('--stick',(h+(sbar?sbar.offsetHeight:0))+'px'); }
-    stick(); window.addEventListener('resize',stick);
+    requestAnimationFrame(stick); window.addEventListener('resize',stick);   /* measured on the next frame, not while loading */
 
     function Asm(svg){
       var els={}; [].forEach.call(svg.querySelectorAll('[data-el]'),function(g){els[g.getAttribute('data-el')]=g;});
@@ -141,22 +142,24 @@
         if(!sc.offsetParent||r.bottom<0||r.top>vh){ if(sc._idx!==-1){sc._idx=-1; if(sc._anim)sc._anim.stop(); if(sc._vid)sc._vid.pause();} return; }
         /* The figure is sticky, so near the end it would sit over the last step. Push it up with the last step:
            the figure never goes below the step it illustrates. */
-        var st=sc._stage, last=sc._lis[sc._lis.length-1];
-        st.style.transform='';
-        var over=st.getBoundingClientRect().bottom-last.getBoundingClientRect().top+8;
-        if(over>0)st.style.transform='translateY('+(-over)+'px)';
-        var sb=st.getBoundingClientRect().bottom, line=sb+(vh-sb)*0.3, idx=0;
-        sc._lis.forEach(function(li,i){ if(li.getBoundingClientRect().top<=line)idx=i; });
+        /* all reads first, one write at the end: the figure's own shift (sc._off) is taken out of its measured bottom
+           instead of clearing the transform and measuring again, which forced a layout per frame */
+        var st=sc._stage, tops=sc._lis.map(function(li){return li.getBoundingClientRect().top;});
+        var natural=st.getBoundingClientRect().bottom-(sc._off||0);
+        var over=natural-tops[tops.length-1]+8, off=over>0?-over:0;
+        var sb=natural+off, line=sb+(vh-sb)*0.3, idx=0;
+        tops.forEach(function(t,i){ if(t<=line)idx=i; });
         /* a step list near the end of the page can never reach the line: once the page is scrolled to its end,
            the last step that is on screen becomes the current one */
         var end=window.scrollY+vh>=document.documentElement.scrollHeight-4;
-        if(end)sc._lis.forEach(function(li,i){ if(i>idx&&li.getBoundingClientRect().top<vh)idx=i; });
+        if(end)tops.forEach(function(t,i){ if(i>idx&&t<vh)idx=i; });
+        if(off!==(sc._off||0)){ sc._off=off; st.style.transform=off?'translateY('+off+'px)':''; }
         if(idx!==sc._idx)activate(sc,idx);
       });
     }
     function req(){ if(!ticking){ticking=true; requestAnimationFrame(update);} }
     window.addEventListener('scroll',req,{passive:true}); window.addEventListener('resize',req);
-    update();
+    req();
   })();
   (function(){
     // inline clips and the home page's turntable: load and play while on screen; with reduced motion the poster stays
