@@ -5,9 +5,9 @@
 
 **任天堂株式会社の公式製品ではありません。**（下の注記を参照）
 
-- 取扱説明書: https://gc-abxy.pages.dev/
-- 最新のファームウェア（`gc-abxy.uf2`）: https://gc-abxy.pages.dev/fw
-- 問い合わせ: https://gc-abxy.pages.dev/support（このリポジトリの Issues）
+- 取扱説明書: <https://gc-abxy.pages.dev/>
+- 最新のファームウェア（`gc-abxy.uf2`）: <https://gc-abxy.pages.dev/fw>
+- 問い合わせ: <https://gc-abxy.pages.dev/support>（このリポジトリの Issues）
 
 書き込み方は、取扱説明書の「[プログラムの書き込み](https://gc-abxy.pages.dev/firmware/#flash)」を見てください。
 

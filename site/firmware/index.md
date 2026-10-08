@@ -12,6 +12,8 @@ url: https://gc-abxy.pages.dev/firmware/
 
 （図: 背面ケース側から見た完成品。USB 端子の左に XIAO のリセットボタン）
 
+（図: Chrome で gc-abxy.pages.dev/fw を開いたところ。右上のダウンロード表示に gc-abxy.uf2（416 KB・完了））
+
 （図: Mac の Finder。左の「場所」に XIAO-SENSE が表示され、中に CURRENT.UF2 など 3 つのファイルがある）
 
 （図: gc-abxy.uf2 を、右のウインドウから左の XIAO-SENSE のウインドウへドラッグしているところ）
@@ -19,6 +21,8 @@ url: https://gc-abxy.pages.dev/firmware/
 （図: テキストエディットに abxy と入力されたところ）
 
 背面ケース側から見た図です。ケースの外からでも、先の細い物でリセットボタンを押せます。 1: リセットボタン。
+
+Mac の Chrome の例です。右上に `gc-abxy.uf2` のダウンロードが表示されます。
 
 Mac の Finder の例です。左の「場所」に **XIAO-SENSE** が表示されます。
 
