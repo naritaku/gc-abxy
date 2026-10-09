@@ -25,10 +25,10 @@ jobs:
       SNIPPET: studio-rpc-usb-uart
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Cache west modules
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         continue-on-error: true
         with:
           path: |
@@ -112,7 +112,7 @@ jobs:
           ls -la out
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: firmware
           path: out/
@@ -125,8 +125,8 @@ jobs:
       contents: write
       actions: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v7
         with:
           name: firmware
           path: firmware
@@ -139,7 +139,7 @@ jobs:
           f="release-notes/${GITHUB_REF_NAME}.md"
           if [ -f "$f" ]; then echo "body_path=$f" >> "$GITHUB_OUTPUT"
           else echo "::warning::$f がないので、Release の本文は自動生成だけになります"; fi
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: |
             firmware/gc-abxy.uf2

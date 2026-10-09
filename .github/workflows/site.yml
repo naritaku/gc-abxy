@@ -20,7 +20,7 @@ jobs:
       contents: read
       deployments: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       # Every page's footer carries the revision history ("<build date> 1st Release") and the spec date;
       # stamp today's date (JST) into all pages on every deploy.
       - name: Stamp the build date into the revision history
@@ -44,7 +44,7 @@ jobs:
             grep -q '^/releases *\/fw-pending.html' site/_redirects || { echo "::error::could not rewrite /releases in site/_redirects"; exit 1; }
             echo "no release yet; /fw and /releases go to fw-pending.html"
           fi
-      - uses: cloudflare/wrangler-action@v3
+      - uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
