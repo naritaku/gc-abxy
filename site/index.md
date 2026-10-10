@@ -20,6 +20,12 @@ url: https://gc-abxy.pages.dev/
 
 画像は完成イメージ（CG）です。
 
+## 紹介動画
+
+[（図: 紹介動画を再生する（33 秒、YouTube））](https://youtu.be/IB9-RAnWOxc)
+
+再生すると YouTube から動画を読み込みます。[YouTube で見る](https://youtu.be/IB9-RAnWOxc)
+
 ## できること
 
 - **入力**: A・B・X・Y の 4 つのキーで入力します。入力するキーやショートカットは、パソコンの Chrome か Edge で変更できます。

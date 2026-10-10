@@ -172,6 +172,17 @@ b.addEventListener('change',function(){
 try{localStorage.setItem('gcabxy-'+b.id,b.checked?'1':'0');}catch(e){}
 });
 });
+[].forEach.call(document.querySelectorAll('.yt[data-yt]'),function(box){
+var a=box.querySelector('a');if(!a)return;
+a.addEventListener('click',function(e){
+e.preventDefault();
+var f=document.createElement('iframe');
+f.src='https://www.youtube-nocookie.com/embed/'+box.getAttribute('data-yt')+'?autoplay=1&rel=0';
+f.title=box.getAttribute('data-title')||'YouTube';
+f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;
+f.referrerPolicy='strict-origin-when-cross-origin';
+box.replaceChild(f,a);f.focus();
+});
 })();
 function btFail(e,verb){
 if(e.name==='NotFoundError')return'選ばれませんでした。白く点滅する番号になっているか確かめて、もう一度押してください。';
@@ -334,5 +345,6 @@ if(dev&&dev.gatt.connected){try{await readStatus();if(ch.bat)await readBattery()
 var t=report(),ta=$('diag-text');ta.value=t;ta.hidden=false;
 try{await navigator.clipboard.writeText(t);say('結果をコピーしました。問い合わせに貼ってください。');}
 catch(e){ta.select();say('コピーできませんでした。下の枠の中を選んでコピーしてください。');}
+});
 });
 })();
